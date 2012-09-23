@@ -1,0 +1,35 @@
+#include "images.edc"
+
+fonts {
+   font: "DejaVuSansMono.ttf" "DejaVuSansMono";
+}
+
+color_classes {
+   color_class { name: "blue";
+      color: 114 162 255 255;
+      color2: 255 255 255 255;
+      color3: 255 255 255 255;
+   }
+   color_class { name: "green";
+      color: 53 227 41 255;
+      color2: 255 255 255 255;
+      color3: 255 255 255 255;
+   }
+}
+
+externals {
+   external: "elm";
+}
+
+collections {
+   #include "icons.edc"
+
+   #include "MediaMainView.edc"
+   #include "MenuMainView.edc"
+   #include "NavMainView.edc"
+   #include "NavInfoView.edc"
+   #include "NavRouteListView.edc"
+   #include "NavRouteCalcView.edc"
+
+}
+

@@ -1,0 +1,77 @@
+#!/bin/bash
+
+## TODO: 
+##       - why does the $RESOLUTION variable not work?
+##       - start OISPControl with correct joystick device as parameter or better autodetect
+##       - OISPControl isn't killed by xsession en, because it has no X connection -> think about how to solve it. Maybe a oisp-stop script at E17 end.
+
+OISP_PATH=$HOME/src/svn/oisp/trunk/src
+OIUI_PATH=$HOME/src/svn/oiui/trunk/src/oiui
+RESULUTION=800x480
+DATE_FORMAT=`date +%G-%m-%dT%H-%M-%SZ`
+LOGPATH=$HOME/.oi/log/$DATE_FORMAT
+
+echo "Starting the OISP Framework..."
+
+mkdir -p $LOGPATH
+
+## composite and resolution change
+#COMPIZ_TEST=`ps -A | grep compiz`
+#XEPHYR_TEST=`ps -A | grep Xephyr`
+
+if [ $# == 1 ]; then
+if [ "$1" != "local" ]; then
+
+  echo "Changing resolution..."
+  xrandr --newmode "840x525"   34.25  840 864 944 1048  525 528 538 547 -hsync +vsync
+  xrandr --addmode LVDS 840x525
+  xrandr -s 840x525
+
+fi
+fi
+
+dmesg > $LOGPATH/dmesg.log
+
+## TODO: kill dbus-monitor after exit or new run
+dbus-monitor > $LOGPATH/dbus-monitor.log&
+
+cd $OIUI_PATH
+./oiui > $LOGPATH/oiui.log 2>&1 &
+
+gpsfake -o "-S 122333" $OISP_PATH/../test/nmea/langen1.nmea&
+echo "gpsfake started..."
+
+cd $OISP_PATH/OISPNavigation_libosmscout
+./OISPNavigation_libosmscout --desktop > $LOGPATH/OISPNavigation.log 2>&1 &
+
+cd $OISP_PATH/OISPMedia
+./OISPMedia > $LOGPATH/OISPMedia.log 2>&1 &
+
+JOYSTICK_TEST0=`ls /dev/input/js0 2>/dev/null`
+JOYSTICK_TEST1=`ls /dev/input/js1 2>/dev/null`
+
+## TODO: find better joystick check!
+if [ "$JOYSTICK_TEST0" = "" ] && [ "$JOYSTICK_TEST1" = "" ]; then
+  echo "start OISPControl_keyb"
+  cd $OISP_PATH/OISPControl_keyb/
+  ./OISPControl_keyb > $LOGPATH/OISPControl_keyb.log 2>&1 &
+else
+  echo "start OISPControl"
+
+  ## Dirty! Dirty! -> Workaround to kill all instances of OISPControl before starting again.
+  killall OISPControl
+  killall lt-OISPControl
+
+  cd $OISP_PATH/OISPControl/
+  ./OISPControl > $LOGPATH/OISPControl.log 2>&1 &
+
+  #if [ test -f /var/run/gpsd.pid ]; then
+    echo "Starting GPS Logger..."
+    ## kill all gpxlogger before to ensure only one is running
+    killall gpspipe
+
+    gpspipe -r  > $LOGPATH/gpstrack.log &
+ # fi
+fi
+
+

@@ -1,0 +1,232 @@
+ group { name: "MediaMainView";
+    min: 800 480;
+    max: 800 480;
+    data {
+       item: "pref_size" "800x480";
+    }
+    parts {
+       part { name: "Image03";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             rel2 {
+                offset: 0 0;
+             }
+             image {
+                normal: "media_bg.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+       part { name: "SidebarImage";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             rel2 {
+                relative: 0 1;
+                offset: 219 0;
+             }
+             image {
+                normal: "sidebar.png";
+                border: 0 60 0 0;
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+       part { name: "LowerbarImage";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             rel1 {
+                relative: 0 1;
+                offset: 0 -59;
+             }
+             rel2 {
+                offset: 0 0;
+             }
+             image {
+                normal: "lower_bar.png";
+                border: 0 0 30 0;
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+       part { name: "Button01";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                relative: 0 0;
+                offset: 10 -30;
+                to: "LowerbarImage";
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 100 50;
+                to: "LowerbarImage";
+             }
+             params {
+                string: "style" "default";
+                string: "icon" "MenuIcon";
+             }
+          }
+       }
+       part { name: "List01";
+          type: EXTERNAL;
+          source: "elm/list";
+          description { state: "default" 0;
+             rel1 {
+                offset: 234 71;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 742 406;
+             }
+             params {
+                string: "style" "default";
+                choice: "list mode" "scroll";
+                choice: "horizontal scroll" "auto";
+                choice: "vertical scroll" "auto";
+                bool: "horizontal mode" "0";
+                bool: "multi-select mode" "0";
+                bool: "always-select mode" "0";
+             }
+          }
+       }
+       part { name: "Image04";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             rel1 {
+                offset: 180 0;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 538 59;
+             }
+             image {
+                normal: "upper_bar.png";
+                border: 45 45 0 55;
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+       part { name: "Button03";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                offset: 441 10;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 482 52;
+             }
+             params {
+                string: "label" ">>|";
+             }
+          }
+       }
+       part { name: "Button02";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                offset: 225 8;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 266 49;
+             }
+             params {
+                string: "label" "|<<";
+             }
+          }
+       }
+       part { name: "Button04";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                offset: 275 9;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 317 51;
+             }
+             params {
+                string: "style" "default";
+                bool: "disabled" "0";
+                string: "label" "<<";
+             }
+          }
+       }
+       part { name: "Button05";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                offset: 328 9;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 371 51;
+             }
+             params {
+                string: "style" "default";
+                bool: "disabled" "0";
+                string: "label" "=";
+             }
+          }
+       }
+       part { name: "Button06";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                offset: 384 8;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 426 51;
+             }
+             params {
+                string: "style" "default";
+                bool: "disabled" "0";
+                string: "label" ">>";
+             }
+          }
+       }
+    }
+    programs {
+       program { name: "invisible";
+          signal: "invisible";
+          source: "stateval";
+          after: "invisible_signal";
+       }
+       program { name: "visible";
+          signal: "visible";
+          source: "stateval";
+          after: "visible_signal";
+       }
+       program { name: "visible_signal";
+          signal: "";
+          source: "";
+          action: SIGNAL_EMIT "visible_signal" "edje";
+       }
+       program { name: "invisible_signal";
+          signal: "";
+          source: "";
+          action: SIGNAL_EMIT "invisible_signal" "edje";
+       }
+    }
+ }
+

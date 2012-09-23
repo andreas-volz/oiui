@@ -1,0 +1,358 @@
+group { name: "NavInfoView";
+    min: 800 480;
+    max: 800 480;
+    data {
+       item: "pref_size" "800x480";
+    }
+    parts {
+       part { name: "InfoBorder";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             rel1 {
+                relative: 0 0;
+                offset: 10 70;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 190 370;
+             }
+             image {
+                normal: "white_border.png";
+                border: 1 1 1 1;
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+        part { name: "Longitude";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             fixed: 1 1;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 0;
+                offset: 5 20;
+                to: "InfoBorder";
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 180 5;
+                to: "InfoBorder";
+             }
+             text {
+                text: "Longitude:";
+                size: 15;
+                align: 0 0;
+                min: 1 1;
+             }
+          }
+       }
+        part { name: "LongitudeValue";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             fixed: 1 1;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 15 0;
+                to_x: "InfoBorder";
+                to_y: "Longitude";
+             }
+             rel2 {
+                relative: 1 1;
+                offset: 0 40;
+                to_x: "InfoBorder";
+                to_y: "Longitude";
+             }
+             text {
+                text: "12.34567";
+                size: 15;
+                align: 0 0;
+                min: 1 1;
+             }
+          }
+       }
+        part { name: "Latitude";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             fixed: 1 1;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 5 50;
+                to_x: "InfoBorder";
+                to_y: "LongitudeValue";
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 180 5;
+                to: "InfoBorder";
+             }
+             text {
+                text: "Latitude:";
+                size: 15;
+                align: 0 0;
+                min: 1 1;
+             }
+          }
+       }
+        part { name: "LatitudeValue";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             fixed: 1 1;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 15 0;
+                to_x: "InfoBorder";
+                to_y: "Latitude";
+             }
+             rel2 {
+                relative: 1 1;
+                offset: 0 90;
+                to_x: "InfoBorder";
+                to_y: "Latitude";
+             }
+             text {
+                text: "52.213423";
+                size: 15;
+                align: 0 0;
+                min: 1 1;
+             }
+          }
+       }
+        part { name: "Heading";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             fixed: 1 1;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 5 50;
+                to_x: "InfoBorder";
+                to_y: "LatitudeValue";
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 180 5;
+                to: "InfoBorder";
+             }
+             text {
+                text: "Heading:";
+                size: 15;
+                align: 0 0;
+                min: 1 1;
+             }
+          }
+       }
+        part { name: "HeadingValue";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             fixed: 1 1;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 15 0;
+                to_x: "InfoBorder";
+                to_y: "Heading";
+             }
+             rel2 {
+                relative: 1 1;
+                offset: 0 140;
+                to_x: "InfoBorder";
+                to_y: "Heading";
+             }
+             text {
+                text: "236.34°";
+                size: 15;
+                align: 0 0;
+                min: 1 1;
+             }
+          }
+       }
+        part { name: "Speed";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             fixed: 1 1;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 5 50;
+                to_x: "InfoBorder";
+                to_y: "HeadingValue";
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 180 5;
+                to: "InfoBorder";
+             }
+             text {
+                text: "Speed:";
+                size: 15;
+                align: 0 0;
+                min: 1 1;
+             }
+          }
+       }
+        part { name: "SpeedValue";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             fixed: 1 1;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 15 0;
+                to_x: "InfoBorder";
+                to_y: "Speed";
+             }
+             rel2 {
+                relative: 1 1;
+                offset: 0 190;
+                to_x: "InfoBorder";
+                to_y: "Speed";
+             }
+             text {
+                text: "185 km/h";
+                size: 15;
+                align: 0 0;
+                min: 1 1;
+             }
+          }
+       }
+        part { name: "GPSStatus";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             fixed: 1 1;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 5 50;
+                to_x: "InfoBorder";
+                to_y: "SpeedValue";
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 180 5;
+                to: "InfoBorder";
+             }
+             text {
+                text: "GPS-Status:";
+                size: 15;
+                align: 0 0;
+                min: 1 1;
+             }
+          }
+       }
+        part { name: "GPSStatusValue";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             fixed: 1 1;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 15 0;
+                to_x: "InfoBorder";
+                to_y: "GPSStatus";
+             }
+             rel2 {
+                relative: 1 1;
+                offset: 0 230;
+                to_x: "InfoBorder";
+                to_y: "GPSStatus";
+             }
+             text {
+                text: "3D Fix";
+                size: 15;
+                align: 0 0;
+                min: 1 1;
+             }
+          }
+       }
+        part { name: "SatelliteNumber";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             fixed: 1 1;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 5 50;
+                to_x: "InfoBorder";
+                to_y: "GPSStatusValue";
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 180 5;
+                to: "InfoBorder";
+             }
+             text {
+                text: "Satellites:";
+                size: 15;
+                align: 0 0;
+                min: 1 1;
+             }
+          }
+       }
+        part { name: "SatelliteNumberValue";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             fixed: 1 1;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 15 0;
+                to_x: "InfoBorder";
+                to_y: "SatelliteNumber";
+             }
+             rel2 {
+                relative: 1 1;
+                offset: 0 220;
+                to_x: "InfoBorder";
+                to_y: "SatelliteNumber";
+             }
+             text {
+                text: "5";
+                size: 15;
+                align: 0 0;
+                min: 1 1;
+             }
+          }
+       }
+    }
+    programs {
+       program { name: "invisible";
+          signal: "invisible";
+          source: "stateval";
+          after: "invisible_signal";
+       }
+       program { name: "visible";
+          signal: "visible";
+          source: "stateval";
+          after: "visible_signal";
+       }
+       program { name: "visible_signal";
+          signal: "";
+          source: "";
+          action: SIGNAL_EMIT "visible_signal" "edje";
+       }
+       program { name: "invisible_signal";
+          signal: "";
+          source: "";
+          action: SIGNAL_EMIT "invisible_signal" "edje";
+       }
+    }
+}
+

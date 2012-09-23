@@ -1,0 +1,367 @@
+group { name: "NavRouteListView";
+    min: 800 480;
+    max: 800 480;
+    data {
+       item: "pref_size" "800x480";
+    }
+    parts {
+       part { name: "route_border1";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             rel1 {
+                relative: 0 0;
+                offset: 10 70;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 190 200;
+                //to_x: "SidebarImage";
+             }
+             image {
+                normal: "white_border.png";
+                border: 1 1 1 1;
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+       part { name: "route_border1_direction";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                relative: 0 0;
+                offset: 5 5;
+                to: "route_border1";
+             }
+             rel2 {
+                relative: 0.5 0.8;
+                offset: 0 0;
+                to: "route_border1";
+             }
+             image {
+                normal: "navigation_arrow.png";
+                middle: DEFAULT;
+             }
+          }
+       }
+       part { name: "route_border1_distance";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 1 1;
+                offset: 5 -40;
+                to: "route_border1_direction";
+             }
+             rel2 {
+                relative: 1 1;
+                offset: 0 0;
+                to_x: "route_border1";
+                to_y: "route_border1_direction";
+             }
+             text {
+                text: "in x m";
+                size: 15;
+                align: 0 0;
+             }
+          }
+       }
+       part { name: "route_border1_street";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 5 0;
+                to_x: "route_border1";
+                to_y: "route_border1_direction";
+             }
+             rel2 {
+                relative: 1 1;
+                offset: 0 0;
+                to: "route_border1";
+                
+             }
+             text {
+                text: "Street abc";
+                size: 15;
+                align: 0 0;
+             }
+          }
+       }
+       part { name: "route_border2";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             rel1 {
+                relative: 0 1;
+                offset: 0 -1;
+                to: "route_border1";
+
+             }
+             rel2 {
+                relative: 1 1;
+                offset: -1 60;
+                to: "route_border1";
+             }
+             image {
+                normal: "white_border.png";
+                border: 1 1 1 1;
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+       part { name: "route_border2_direction";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                relative: 0 0;
+                offset: 5 5;
+                to: "route_border2";
+             }
+             rel2 {
+                relative: 0.3 0.8;
+                offset: 0 0;
+                to: "route_border2";
+             }
+             image {
+                normal: "navigation_arrow.png";
+                middle: DEFAULT;
+             }
+          }
+       }
+       part { name: "route_border2_distance";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 0 0;
+                to: "route_border2_street";
+             }
+             rel2 {
+                relative: 1 1;
+                offset: 0 0;
+                to: "route_border2";
+             }
+             text {
+                text: "in x m";
+                size: 15;
+                align: 0 0;
+             }
+          }
+       }
+       part { name: "route_border2_street";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 1 0;
+                offset: 5 0;
+                to: "route_border2_direction";
+             }
+             rel2 {
+                relative: 1 0.5;
+                offset: 0 0;
+                to: "route_border2";
+                
+             }
+             text {
+                text: "Street abc";
+                size: 15;
+                align: 0 0;
+             }
+          }
+       }
+       part { name: "route_border3";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             rel1 {
+                relative: 0 1;
+                offset: 0 -1;
+                to: "route_border2";
+
+             }
+             rel2 {
+                relative: 1 1;
+                offset: -1 60;
+                to: "route_border2";
+             }
+             image {
+                normal: "white_border.png";
+                border: 1 1 1 1;
+                middle: DEFAULT;
+             }
+          }
+       }
+       part { name: "route_border3_direction";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                relative: 0 0;
+                offset: 5 5;
+                to: "route_border3";
+             }
+             rel2 {
+                relative: 0.3 0.8;
+                offset: 0 0;
+                to: "route_border3";
+             }
+             image {
+                normal: "navigation_arrow.png";
+                middle: DEFAULT;
+             }
+          }
+       }
+       part { name: "route_border3_distance";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 0 1;
+                offset: 0 0;
+                to: "route_border3_street";
+             }
+             rel2 {
+                relative: 1 1;
+                offset: 0 0;
+                to: "route_border3";
+             }
+             text {
+                text: "in x m";
+                size: 15;
+                align: 0 0;
+             }
+          }
+       }
+       part { name: "route_border3_street";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 1 0;
+                offset: 5 0;
+                to: "route_border3_direction";
+             }
+             rel2 {
+                relative: 1 0.5;
+                offset: 0 0;
+                to: "route_border3";
+                
+             }
+             text {
+                text: "Street abc";
+                size: 15;
+                align: 0 0;
+             }
+          }
+       }
+       part { name: "route_border4";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             rel1 {
+                relative: 0 1;
+                offset: 0 10;
+                to: "route_border3";
+
+             }
+             rel2 {
+                relative: 1 1;
+                offset: -1 60;
+                to: "route_border3";
+             }
+             image {
+                normal: "white_border.png";
+                border: 1 1 1 1;
+                middle: DEFAULT;
+             }
+          }
+       }
+       part { name: "route_border4_direction";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                relative: 0 0;
+                offset: 5 5;
+                to: "route_border4";
+             }
+             rel2 {
+                relative: 0.3 0.8;
+                offset: 0 0;
+                to: "route_border4";
+             }
+             image {
+                normal: "route_car_icon.png";
+                middle: DEFAULT;
+             }
+          }
+       }
+       part { name: "route_border4_street";
+          type: TEXT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             color: 255 255 255 255;
+             rel1 {
+                relative: 1 0;
+                offset: 5 0;
+                to_x: "route_border4_direction";
+                to_y: "route_border4";
+             }
+             rel2 {
+                relative: 1 1;
+                offset: 0 0;
+                to: "route_border4";
+                
+             }
+             text {
+                text: "Street abc";
+                size: 15;
+                align: 0 0.5;
+             }
+          }
+       }
+    }
+    programs {
+       program { name: "invisible";
+          signal: "invisible";
+          source: "stateval";
+          after: "invisible_signal";
+       }
+       program { name: "visible";
+          signal: "visible";
+          source: "stateval";
+          after: "visible_signal";
+       }
+       program { name: "visible_signal";
+          signal: "";
+          source: "";
+          action: SIGNAL_EMIT "visible_signal" "edje";
+       }
+       program { name: "invisible_signal";
+          signal: "";
+          source: "";
+          action: SIGNAL_EMIT "invisible_signal" "edje";
+       }
+    }
+}
+

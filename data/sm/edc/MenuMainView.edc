@@ -1,0 +1,117 @@
+ group { name: "MenuMainView";
+    min: 800 480;
+    max: 800 480;
+    data {
+       item: "pref_size" "800x480";
+    }
+    parts {
+       part { name: "Rectangle01";
+          type: RECT;
+          mouse_events: 0;
+          description { state: "default" 0;
+             color: 0 0 0 255;
+             rel2 {
+                offset: 0 0;
+             }
+          }
+       }
+       part { name: "Button01";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                offset: 134 126;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 231 209;
+             }
+             params {
+                string: "style" "default";
+                bool: "disabled" "0";
+                //string: "label" "Navigation";
+                string: "icon" "MenuNavIcon";
+             }
+          }
+       }
+       part { name: "Button02";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                offset: 526 121;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 631 212;
+             }
+             params {
+                string: "style" "default";
+                bool: "disabled" "0";
+                //string: "label" "Music";
+	              string: "icon" "MenuMediaIcon";
+             }
+          }
+       }
+       part { name: "Button03";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                offset: 673 361;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 775 462;
+             }
+             params {
+                string: "style" "default";
+                bool: "disabled" "0";
+                //string: "label" "Shutdown";
+                string: "icon" "MenuShutdownIcon";
+             }
+          }
+       }
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             rel1 {
+                offset: 192 229;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 592 469;
+             }
+             image {
+                normal: "Audi_R8_small.jpg";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+    programs {
+       program { name: "invisible";
+          signal: "invisible";
+          source: "stateval";
+          after: "invisible_signal";
+       }
+       program { name: "visible";
+          signal: "visible";
+          source: "stateval";
+          after: "visible_signal";
+       }
+       program { name: "visible_signal";
+          signal: "";
+          source: "";
+          action: SIGNAL_EMIT "visible_signal" "edje";
+       }
+       program { name: "invisible_signal";
+          signal: "";
+          source: "";
+          action: SIGNAL_EMIT "invisible_signal" "edje";
+       }
+    }
+ }
+

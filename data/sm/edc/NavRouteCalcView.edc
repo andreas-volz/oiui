@@ -1,0 +1,86 @@
+ group { name: "NavRouteCalcView";
+    min: 800 480;
+    max: 800 480;
+    data {
+       item: "pref_size" "800x480";
+    }
+    parts {
+       part { name: "Button08";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             fixed: 1 1;
+             rel1 {
+                offset: 671 277;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 783 313;
+             }
+             params {
+                string: "style" "default";
+                string: "label" "Langen (Hessen)";
+             }
+          }
+       }
+       part { name: "Button09";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             fixed: 1 1;
+             rel1 {
+                offset: 673 326;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 783 362;
+             }
+             params {
+                string: "style" "default";
+                string: "label" "Brachttal";
+             }
+          }
+       }
+       part { name: "Button10";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             fixed: 1 1;
+             rel1 {
+                offset: 673 373;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 782 409;
+             }
+             params {
+                string: "style" "default";
+                string: "label" "Erlangen";
+             }
+          }
+       }
+    }
+    programs {
+       program { name: "invisible";
+          signal: "invisible";
+          source: "stateval";
+          after: "invisible_signal";
+       }
+       program { name: "visible";
+          signal: "visible";
+          source: "stateval";
+          after: "visible_signal";
+       }
+       program { name: "visible_signal";
+          signal: "";
+          source: "";
+          action: SIGNAL_EMIT "visible_signal" "edje";
+       }
+       program { name: "invisible_signal";
+          signal: "";
+          source: "";
+          action: SIGNAL_EMIT "invisible_signal" "edje";
+       }
+    }
+ }
+

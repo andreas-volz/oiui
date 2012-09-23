@@ -1,0 +1,225 @@
+group { name: "NavCancelIcon";
+    data {
+       item: "pref_size" "327x330";
+    }
+    parts {
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                offset: 5 5;
+             }
+             rel2 {
+                offset: -5 -5;
+             }
+             image {
+                normal: "navigation_cancel.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+ }
+
+group { name: "NavFlagIcon";
+    data {
+       item: "pref_size" "327x330";
+    }
+    parts {
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                offset: 5 5;
+             }
+             rel2 {
+                offset: -5 -5;
+             }
+             image {
+                normal: "navigation_flag.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+ }
+
+group { name: "NavInfoIcon";
+    data {
+       item: "pref_size" "327x330";
+    }
+    parts {
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                offset: 5 5;
+             }
+             rel2 {
+                offset: -5 -5;
+             }
+             image {
+                normal: "navigation_info.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+ }
+
+group { name: "NavZoomMinusIcon";
+    data {
+       item: "pref_size" "327x330";
+    }
+    parts {
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                offset: 5 5;
+             }
+             rel2 {
+                offset: -5 -5;
+             }
+             image {
+                normal: "navigation_zoom_minus.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+ }
+ group { name: "NavZoomPlusIcon";
+    data {
+       item: "pref_size" "327x330";
+    }
+    parts {
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                offset: 5 5;
+             }
+             rel2 {
+                offset: -5 -5;
+             }
+             image {
+                normal: "navigation_zoom_plus.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+ }
+ group { name: "MenuIcon";
+    data {
+       item: "pref_size" "327x330";
+    }
+    parts {
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                offset: 5 5;
+             }
+             rel2 {
+                offset: -5 -5;
+             }
+             image {
+                normal: "menu_icon.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+ }
+ group { name: "MenuNavIcon";
+    data {
+       item: "pref_size" "327x330";
+    }
+    parts {
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                offset: 5 5;
+             }
+             rel2 {
+                offset: -5 -5;
+             }
+             image {
+                normal: "nav_main_icon.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+ }
+ group { name: "MenuShutdownIcon";
+    data {
+       item: "pref_size" "327x330";
+    }
+    parts {
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                offset: 20 20;
+             }
+             rel2 {
+                offset: -20 -20;
+             }
+             image {
+                normal: "shutdown.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+ }
+ group { name: "MenuMediaIcon";
+    data {
+       item: "pref_size" "500x500";
+    }
+    parts {
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                offset: -10 0;
+             }
+             image {
+                normal: "media_main_icon.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+ }

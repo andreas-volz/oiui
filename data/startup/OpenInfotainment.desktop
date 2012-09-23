@@ -1,0 +1,14 @@
+[Desktop Entry]
+Hidden=false
+Exec=openit-session
+Icon=/opt/e17/share/icons/editje.png
+Name[de_DE]=OpenInfotainment
+Type=Application
+NoDisplay=false
+Version=1.0
+StartupNotify=false
+Comment=OpenInfotainment
+Terminal=false
+Name=OpenInfotainment
+Icon[de_DE]=/opt/e17/share/icons/editje.png
+Comment[de_DE]=OpenInfotainment

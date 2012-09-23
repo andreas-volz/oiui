@@ -1,0 +1,9 @@
+Open Infotainment Service Provider (OISP)
+
+BUG:
+- check for StopClock correct
+
+Debug
+-----
+export DBUSXX_VERBOSE=1
+

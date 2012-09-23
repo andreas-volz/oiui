@@ -1,0 +1,9 @@
+#!/bin/sh
+
+export E_HOME=.oilm
+unset E_CONF_PROFILE # if you run E17 as host!!!
+
+Xephyr -ac -screen 800x600 :1 &
+
+sleep 3s && /opt/e17/bin/enlightenment_start -display :1
+

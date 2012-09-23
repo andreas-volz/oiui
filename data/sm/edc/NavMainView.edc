@@ -1,0 +1,200 @@
+ group { name: "NavMainView";
+    min: 800 480;
+    max: 800 480;
+    data {
+       item: "pref_size" "800x480";
+    }
+    parts {
+       part { name: "SidebarImage";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             rel2 {
+                relative: 0 1;
+                offset: 219 0;
+             }
+             image {
+                normal: "sidebar.png";
+                border: 0 60 0 0;
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+       part { name: "LowerbarImage";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             rel1 {
+                relative: 0 1;
+                offset: 0 -59;
+             }
+             rel2 {
+                offset: 0 0;
+             }
+             image {
+                normal: "lower_bar.png";
+                border: 0 0 30 0;
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+
+       part { name: "Button01";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                relative: 0 0;
+                offset: 10 -30;
+                to: "LowerbarImage";
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 100 50;
+                to: "LowerbarImage";
+             }
+             params {
+                string: "style" "default";
+                string: "icon" "MenuIcon";
+             }
+          }
+       }
+       part { name: "Image03";
+          type: IMAGE;
+          mouse_events: 0;
+          description { state: "default" 0;
+             rel1 {
+                offset: 180 0;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 590 59;
+             }
+             image {
+                normal: "upper_bar.png";
+                border: 45 45 0 55;
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+       part { name: "Button11";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                offset: 235 7;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 280 51;
+             }
+             params {
+                string: "style" "default";
+                bool: "disabled" "0";
+                string: "icon" "NavFlagIcon";
+             }
+          }
+       }
+       part { name: "Button12";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                offset: 296 7;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 340 53;
+             }
+             params {
+                string: "style" "default";
+                bool: "disabled" "0";
+                string: "icon" "NavCancelIcon";
+             }
+          }
+       }
+       part { name: "Button13";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                offset: 356 8;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 401 52;
+             }
+             params {
+                string: "style" "default";
+                bool: "disabled" "0";
+                string: "icon" "NavInfoIcon";
+             }
+          }
+       }
+       part { name: "Button14";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                offset: 415 7;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 461 53;
+             }
+             params {
+                string: "style" "default";
+                string: "icon" "NavZoomMinusIcon";
+                bool: "disabled" "0";
+             }
+          }
+       }
+       part { name: "Button15";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             rel1 {
+                offset: 475 7;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 522 53;
+             }
+             params {
+                string: "style" "default";
+                string: "icon" "NavZoomPlusIcon";
+                bool: "disabled" "0";
+             }
+          }
+       }
+    }
+    programs {
+       program { name: "invisible";
+          signal: "invisible";
+          source: "stateval";
+          after: "invisible_signal";
+       }
+       program { name: "visible";
+          signal: "visible";
+          source: "stateval";
+          after: "visible_signal";
+       }
+       program { name: "visible_signal";
+          signal: "";
+          source: "";
+          action: SIGNAL_EMIT "visible_signal" "edje";
+       }
+       program { name: "invisible_signal";
+          signal: "";
+          source: "";
+          action: SIGNAL_EMIT "invisible_signal" "edje";
+       }
+    }
+ }
+

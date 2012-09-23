@@ -1,0 +1,339 @@
+<?xml version="1.0"?>
+<!DOCTYPE stateval PUBLIC "stateval" "http://stateval.googlecode.com/svn/trunk/stateval/data/xml/stateval.dtd">
+
+<stateval xmlns:state="stateval">
+
+  <events>
+    <event name="VIEW_UPDATE"/>
+    <event name="EXIT"/>
+		<event name="HK_MENU"/>
+    <event name="HK_NAV"/>
+    <event name="HK_PHONE"/>
+    <event name="HK_TUNER"/>
+    <event name="HK_MEDIA"/>
+    <event name="HK_RETURN"/>
+    <event name="SK_1"/>
+    <event name="SK_2"/>
+    <event name="SK_3"/>
+    <event name="SK_4"/>
+    <event name="NAV_MAIN"/>
+    <event name="NAV_COUNTRY"/>
+    <event name="NAV_CITY"/>
+    <event name="NAV_STREET"/>
+    <event name="NAV_INFO"/>
+    <event name="NAV_ROUTE_CALC"/>
+    <event name="TUNER_LIST"/>
+    <event name="TUNER_FREQ"/>
+    <event name="TEL_ARD"/>
+    <event name="TEL_DIAL"/>
+    <event name="MEDIA_LIST"/>
+    <event name="MEDIA_DETAIL"/>
+    <event name="MEDIA_TITLE_DETAILS"/>
+    <event name="MEDIA_CD_DETAILS"/>
+    <event name="CHANGE_MEDIA_TITLE"/>
+    <event name="MAP_ZOOM_IN"/>
+    <event name="MAP_ZOOM_OUT"/>
+    <event name="MAP_JUMP_CURSOR"/>
+    <event name="MAP_SCROLL_LEFT"/>
+    <event name="MAP_SCROLL_RIGHT"/>
+    <event name="MAP_SCROLL_TOP"/>
+    <event name="MAP_SCROLL_BOTTOM"/>
+    <event name="NAVIGATION_ROUTE_1"/>
+    <event name="NAVIGATION_ROUTE_2"/>
+    <event name="NAVIGATION_ROUTE_3"/>
+    <event name="MEDIA_LOAD"/>
+    <event name="MEDIA_INCREMENT_TITLE"/>
+    <event name="MEDIA_DECREMENT_TITLE"/>
+    <event name="edje,Button01,clicked"/>
+    <event name="edje,Button02,clicked"/>
+    <event name="edje,Button03,clicked"/>
+    <event name="edje,Button04,clicked"/>
+    <event name="edje,Button05,clicked"/>
+    <event name="edje,Button06,clicked"/>
+    <event name="edje,Button07,clicked"/>
+    <event name="edje,Button08,clicked"/>
+    <event name="edje,Button09,clicked"/>
+    <event name="edje,Button10,clicked"/>
+    <event name="edje,Button11,clicked"/>
+    <event name="edje,Button12,clicked"/>
+    <event name="edje,Button13,clicked"/>
+    <event name="edje,Button14,clicked"/>
+    <event name="edje,Button15,clicked"/>
+    <event name="edje,,load"/>
+    <event name="oispkey,One,down"/>
+    <event name="oispkey,Two,down"/>
+    <event name="oispkey,Start,down"/>
+    <event name="oispkey,Menu,down"/>
+    <event name="oispaxis,X,min"/>
+    <event name="oispaxis,X,max"/>
+    <event name="oispaxis,Y,min"/>
+    <event name="oispaxis,Y,max"/>
+  </events>
+  
+  <variables>
+    <variable name="TextExampleString" type="String" value="A dynamic variable value!"/>
+    <variable name="BubbleExample" type="Struct">
+      <variable name="info" type="String" value="a dynamic info"/>
+      <variable name="label" type="String" value="a dynamic label"/>
+      <variable name="content" type="String" value="a dynamic content"/>
+    </variable>
+    <variable name="ButtonExample" type="Struct">
+      <variable name="label" type="String" value="a dynamic label"/>
+      <variable name="icon" type="String" value="/home/andreas/Bilder/e_penguin/e_penguin.png"/>
+    </variable>
+    <variable name="NewInfo" type="String" value="...a new Info label.."/>
+    <variable name="AfterLeave" type="String" value="...and now changing after leave..."/>
+    <variable name="TunerFrequencySlider" type="Struct">
+      <variable name="label" type="String" value="stateval changed label"/>
+      <variable name="value" type="Float" value="99.0"/>
+    </variable>
+    <variable name="ListExample" type="List">
+      <variable type="String" value="First Element"/>
+      <variable type="String" value="Second Element"/>
+      <variable type="String" value="Third Element"/>
+    </variable>
+    <variable name="MediaListTitle" type="String" value="Original Title"/>
+
+    <variable name="LongitudeValue" type="String" value="-"/>
+    <variable name="LatitudeValue" type="String" value="-"/>
+    <variable name="SpeedValue" type="String" value="-"/>
+    <variable name="HeadingValue" type="String" value="-"/>
+  </variables>
+  
+  <actions>
+    <action name="changeInfoLabel" type="ChangeVariableAction" variable="TextExampleString" copy="NewInfo"/>
+    <action name="changeInfoLabel2" type="ChangeVariableAction" variable="TextExampleString" copy="AfterLeave"/>
+  </actions>
+  
+  <states>
+    <state name="Root" type="CompoundState"/>
+    <state name="Initial" type="InitialState" parent="Root"/>
+    <state name="Finish" type="FinalState" parent="Root"/>
+		<state name="MenuCompound" type="CompoundState" parent="Root"/>
+		<state name="MenuInitial" type="InitialState" parent="MenuCompound"/>
+		<state name="MenuMain" type="ViewState" parent="MenuCompound" view="MenuMainView"/>
+    <state name="NavCompound" type="CompoundState" parent="Root"/>
+    <state name="NavInitial" type="InitialState" parent="NavCompound"/>
+    <state name="NavMain" type="ViewState" parent="NavCompound">
+      <state:views>
+        <state:view ref="NavMainView"/>
+        <state:view ref="NavInfoView"/>
+      </state:views>
+    </state>
+    <state name="NavRouteCalc" type="ViewState" parent="NavCompound">
+      <state:views>
+        <state:view ref="NavRouteCalcView"/>
+        <state:view ref="NavMainView"/>
+        <state:view ref="NavRouteListView"/>
+      </state:views>
+    </state>
+    <state name="NavCountry" type="ViewState" parent="NavCompound" view="NavCountryView"/>
+    <state name="NavCity" type="ViewState" parent="NavCompound" view="NavCityView"/>
+    <state name="NavStreet" type="ViewState" parent="NavCompound" view="NavStreetView"/>
+    <state name="TunerCompound" type="CompoundState" parent="Root"/>
+    <state name="TunerInitial" type="InitialState" parent="TunerCompound"/>
+    <state name="TunerHistory" type="HistoryState" parent="TunerCompound"/>
+    <state name="TunerList" type="ViewState" parent="TunerCompound" view="TunerListView"/>
+    <state name="TunerFrequency" type="ViewState" parent="TunerCompound" view="TunerFrequencyView"/>
+    <state name="NavInfo" type="ViewState" parent="NavCompound" view="NavInfoView">
+      <state:actions>
+        <state:action ref="changeInfoLabel2" when="leave"/>
+      </state:actions>
+    </state>
+    <state name="TunerAvailable" type="DecisionState" parent="Root"/>
+    <state name="MediaCompound" type="CompoundState" parent="Root"/>
+    <state name="MediaInitial" type="InitialState" parent="MediaCompound"/>
+    <state name="MediaMain" type="ViewState" parent="MediaCompound" view="MediaMainView">
+      <state:actions>
+        <state:action ref="changeInfoLabel" when="enter"/>
+      </state:actions>
+    </state>
+  </states>
+
+  <transitions>
+    <transition from="Initial" to="MenuCompound"/>
+    <transition from="Root" to="Finish" event="EXIT"/>
+		<transition from="Root" to="MenuCompound" event="HK_MENU"/>
+    <transition from="Root" to="NavCompound" event="HK_NAV"/>
+    <transition from="Root" to="TunerCompound" event="HK_TUNER"/>
+    <transition from="Root" to="MediaCompound" event="HK_MEDIA"/>
+    <transition from="MenuInitial" to="MenuMain"/>
+    <transition from="NavInitial" to="NavMain"/>
+    <transition from="NavCompound" to="NavMain" event="NAV_MAIN"/>
+    <transition from="NavCompound" to="NavCountry" event="NAV_COUNTRY"/>
+    <transition from="NavCompound" to="NavCity" event="NAV_CITY"/>
+    <transition from="NavCompound" to="NavStreet" event="NAV_STREET"/>
+    <transition from="NavCompound" to="NavInfo" event="NAV_INFO"/>
+    <transition from="NavCompound" to="NavRouteCalc" event="NAV_ROUTE_CALC"/>
+    <transition from="TunerInitial" to="TunerHistory"/>
+    <transition from="TunerHistory" to="TunerList"/>
+    <transition from="TunerCompound" to="TunerList" event="TUNER_LIST"/>
+    <transition from="TunerCompound" to="TunerFrequency" event="TUNER_FREQ"/>
+    <transition from="MediaInitial" to="MediaMain"/>
+  </transitions>
+  
+  <viewmanager plugin="edje">
+    <params>
+      <param key="width" value="800"/>
+      <param key="height" value="480"/>
+    </params>
+    
+  	<view name="MenuMainView">
+      <params>
+        <param key="filename" value="/home/andreas/src/svn/oiui/trunk/data/sm/screens.edj"/>
+        <param key="groupname" value="MenuMainView"/>
+      </params>
+      <mappings>
+        <map from="edje,Button01,clicked" to="HK_NAV"/>
+				<map from="edje,Button02,clicked" to="HK_MEDIA"/>
+				<map from="edje,Button03,clicked" to="EXIT"/>
+      </mappings>
+    </view>
+
+    <view name="NavMainView">
+      <params>
+        <param key="filename" value="/home/andreas/src/svn/oiui/trunk/data/sm/screens.edj"/>
+        <param key="groupname" value="NavMainView"/>
+      </params>
+      <mappings>
+        <map from="edje,Button01,clicked" to="HK_MENU"/>
+        <map from="edje,Button14,clicked" to="MAP_ZOOM_OUT"/>
+        <map from="edje,Button15,clicked" to="MAP_ZOOM_IN"/>
+        <map from="edje,Button11,clicked" to="NAV_ROUTE_CALC"/>
+        <map from="oispkey,One,down" to="MAP_ZOOM_OUT"/>
+        <map from="oispkey,Two,down" to="MAP_ZOOM_IN"/>
+        <map from="oispkey,Start,down" to="MAP_JUMP_CURSOR"/>
+        <map from="oispkey,Menu,down" to="NAVIGATION_ROUTE_2"/>
+        <map from="oispaxis,X,min" to="MAP_SCROLL_LEFT"/>
+        <map from="oispaxis,X,max" to="MAP_SCROLL_RIGHT"/>
+        <map from="oispaxis,Y,min" to="MAP_SCROLL_BOTTOM"/>
+        <map from="oispaxis,Y,max" to="MAP_SCROLL_TOP"/>
+      </mappings>
+    </view>
+
+    <view name="NavRouteCalcView">
+      <params>
+        <param key="filename" value="/home/andreas/src/svn/oiui/trunk/data/sm/screens.edj"/>
+        <param key="groupname" value="NavRouteCalcView"/>
+      </params>
+      <mappings>
+        <map from="edje,Button11,clicked" to="NAV_MAIN"/>
+        <map from="edje,Button08,clicked" to="NAVIGATION_ROUTE_1"/>
+        <map from="edje,Button09,clicked" to="NAVIGATION_ROUTE_2"/>
+        <map from="edje,Button10,clicked" to="NAVIGATION_ROUTE_3"/>
+      </mappings>
+    </view>
+    
+    <view name="NavRouteListView">
+      <params>
+        <param key="filename" value="/home/andreas/src/svn/oiui/trunk/data/sm/screens.edj"/>
+        <param key="groupname" value="NavRouteListView"/>
+      </params>
+      <mappings>
+      </mappings>
+    </view>
+    
+    <view name="NavInfoView">
+      <params>
+        <param key="filename" value="/home/andreas/src/svn/oiui/trunk/data/sm/screens.edj"/>
+        <param key="groupname" value="NavInfoView"/>
+      </params>
+      <mappings>
+      </mappings>
+      <widgets>
+        <widget name="LatitudeValue" variable="LatitudeValue"/>
+        <widget name="LongitudeValue" variable="LongitudeValue"/>
+        <widget name="SpeedValue" variable="SpeedValue"/>
+        <widget name="HeadingValue" variable="HeadingValue"/>
+      </widgets>
+    </view>
+
+    <view name="NavCountryView">
+      <params>
+        <param key="filename" value="/home/andreas/src/svn/oiui/trunk/data/sm/screens.edj"/>
+        <param key="groupname" value="navigation_country"/>
+      </params>
+      <mappings>
+        <map from="edje,Button01,clicked" to="NAV_CITY"/>
+      </mappings>
+    </view>
+    
+    <view name="NavCityView">
+      <params>
+        <param key="filename" value="/home/andreas/src/svn/oiui/trunk/data/sm/screens.edj"/>
+        <param key="groupname" value="navigation_city"/>
+      </params>
+      <mappings>
+        <map from="edje,Button01,clicked" to="NAV_STREET"/>
+      </mappings>
+    </view>
+    
+    <view name="NavStreetView">
+      <params>
+        <param key="filename" value="/home/andreas/src/svn/oiui/trunk/data/sm/screens.edj"/>
+        <param key="groupname" value="navigation_street"/>
+      </params>
+      <mappings>
+        <map from="edje,Button01,clicked" to="NAV_MAIN"/>
+      </mappings>
+    </view>
+
+    <view name="TunerListView">
+      <params>
+        <param key="filename" value="/home/andreas/src/svn/oiui/trunk/data/sm/screens.edj"/>
+        <param key="groupname" value="tuner_list"/>
+      </params>
+      <mappings>
+        <map from="edje,Button01,clicked" to="HK_NAV"/>
+        <map from="edje,Button02,clicked" to="TUNER_FREQ"/>
+      </mappings>
+    </view>
+
+    <view name="TunerFrequencyView">
+      <params>
+        <param key="filename" value="/home/andreas/src/svn/oiui/trunk/data/sm/screens.edj"/>
+        <param key="groupname" value="tuner_frequenz"/>
+      </params>
+      <mappings>
+        <map from="edje,Button01,clicked" to="TUNER_LIST"/>
+      </mappings>
+      <widgets>
+        <widget name="Slider01" variable="TunerFrequencySlider"/>
+      </widgets>
+    </view>
+    
+    <view name="NavInfoViewOld">
+      <params>
+        <param key="filename" value="/home/andreas/src/svn/oiui/trunk/data/sm/screens.edj"/>
+        <param key="groupname" value="navigation_info"/>
+      </params>
+      <mappings>
+        <map from="edje,Button01,clicked" to="NAV_MAIN"/>
+      </mappings>
+      <widgets>
+        <widget name="Text_Example" variable="TextExampleString"/>
+        <widget name="Bubble01" variable="BubbleExample"/>
+        <widget name="Button02" variable="ButtonExample"/>
+      </widgets>
+    </view>    
+    
+    <view name="MediaMainView">
+      <params>
+        <param key="filename" value="/home/andreas/src/svn/oiui/trunk/data/sm/screens.edj"/>
+        <param key="groupname" value="MediaMainView"/>
+      </params>
+      <mappings>
+        <map from="edje,,load" to="MEDIA_LOAD"/>
+        <map from="edje,Button01,clicked" to="HK_MENU"/>
+        <map from="edje,Button02,clicked" to="MEDIA_DECREMENT_TITLE"/>
+        <map from="edje,Button03,clicked" to="MEDIA_INCREMENT_TITLE"/>
+        <map from="edje,Button04,clicked" to="CHANGE_MEDIA_TITLE"/>
+      </mappings>
+      <widgets>
+        <widget name="List01" variable="ListExample"/>
+        <widget name="Text01" variable="MediaListTitle"/>
+      </widgets>
+    </view>
+  </viewmanager>
+
+</stateval>
