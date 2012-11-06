@@ -41,7 +41,7 @@ oiui_LDADD = \
 	$(SIGC_LIBS) \
 	$(LOG4CXX_LIBS)
 
-AM_CPPFLAGS = \
+oiui_CPPFLAGS = \
 	$(DBUSMM_CFLAGS) \
 	$(STATEVAL_CFLAGS) \
 	$(OICF_CFLAGS) \

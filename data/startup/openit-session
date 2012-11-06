@@ -5,8 +5,8 @@
 ##       - start OISPControl with correct joystick device as parameter or better autodetect
 ##       - OISPControl isn't killed by xsession en, because it has no X connection -> think about how to solve it. Maybe a oisp-stop script at E17 end.
 
-OISP_PATH=$HOME/src/svn/oisp/trunk/src
-OIUI_PATH=$HOME/src/svn/oiui/trunk/src/oiui
+OISP_PATH=$HOME/src/git/openinfotainment/oisp/trunk/src
+OIUI_PATH=$HOME/src/git/openinfotainment/oiui/trunk/src/oiui
 RESULUTION=800x480
 DATE_FORMAT=`date +%G-%m-%dT%H-%M-%SZ`
 LOGPATH=$HOME/.oi/log/$DATE_FORMAT
