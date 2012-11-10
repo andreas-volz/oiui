@@ -4,7 +4,6 @@
 /* stateval */
 #define HAVE_EFL // needed for EFL support
 #include <stateval/stateval.h>
-#include <stateval/private/Thread.h>
 
 /* DBus-cxx */
 #include <dbus-c++/dbus.h>
@@ -28,8 +27,8 @@ private:
   DBus::BusDispatcher dispatcher;
   DBus::Pipe *mSMToDBusPipe;
 
-  Threading::Condition condSMInit;
-  Threading::Mutex mutexSMInit;
+  Glib::Cond condSMInit;
+  Glib::Mutex mutexSMInit;
 };
 
 #endif // MAIN_H
