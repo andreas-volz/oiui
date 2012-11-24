@@ -41,8 +41,7 @@ Main::Main(int argc, const char **argv) :
 
 #ifdef HAVE_LOG4CXX
   //BasicConfigurator::configure ();
-  cout << "searchDataDir():" << searchDataDir() << endl;
-  PropertyConfigurator::configure(searchDataDir() + "/logging.prop");
+  PropertyConfigurator::configure(searchDataFile("logging.prop"));
 #endif // HAVE_LOG4CXX
 
   // deactivate screensaver function
@@ -55,10 +54,9 @@ Main::Main(int argc, const char **argv) :
   cout << "OISPInterface server started..." << endl;
 
   // *** STATE MACHINE ***
-  cout << "data: " << searchDataDir() << endl;
-
   StateMachineAccessor &stateMachineAccessor(StateMachineAccessor::getInstance());
-  stateMachineAccessor.load("smxml", searchDataDir() + "/sm/oiui.smxml");
+  cout << "smxml: " << searchDataFile("sm/oiui.smxml") << endl;
+  stateMachineAccessor.load("smxml", searchDataFile("sm/oiui.smxml"));
 
   stateMachineAccessor.connect(sigc::mem_fun(this, &Main::smSignals));
 

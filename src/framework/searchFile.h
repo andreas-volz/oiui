@@ -6,8 +6,8 @@
 
 // public search functions
 const std::string searchEdjeFile(const std::string &theme);
-const std::string searchPixmapFile(std::string pixmap);
-const std::string searchDataDir();
+const std::string searchPixmapFile(const std::string &pixmap);
+const std::string searchDataFile(const std::string &data);
 
 // private
 const std::string searchFile(std::vector <std::string> &name_vector);

@@ -8,49 +8,71 @@
 #include "searchFile.h"
 #include "Exceptions.h"
 
-#define DATA_THEME_DIR "themes/elm/"
+//#define DATA_THEME_DIR "themes/elm/"
 
 using namespace std;
 
-const std::string searchEdjeFile(const std::string &theme)
+/*const std::string searchEdjeFile(const std::string &theme)
 {
   vector <string> name_vector;
 
   name_vector.push_back(theme);
   name_vector.push_back("../" + theme);
+  
+#ifdef HAVE_CONFIG_H 
   name_vector.push_back(string(PACKAGE_SOURCE_DIR) + "/data/" DATA_THEME_DIR + theme);
   name_vector.push_back(string(PACKAGE_DATA_DIR "/" DATA_THEME_DIR) + theme);
-
+#endif
   const string &file = searchFile(name_vector);
 
-  if (file == "")
+  if (file.empty())
   {
     throw FileNotFoundException(theme);
   }
 
   return file;
-}
+}*/
 
-const std::string searchDataDir()
+const std::string searchPixmapFile(const std::string &pixmap)
 {
   vector <string> name_vector;
 
-  name_vector.push_back("data");
-  name_vector.push_back(string(PACKAGE_SOURCE_DIR) + "/data");
-  name_vector.push_back(PACKAGE_DATA_DIR);
-  cout << PACKAGE_SOURCE_DIR << endl;
-  return searchFile(name_vector);
+  name_vector.push_back("pixmaps/" + pixmap);
+
+#ifdef HAVE_CONFIG_H  
+  name_vector.push_back(string(PACKAGE_SOURCE_DIR) + "/pixmaps/" + pixmap);
+  name_vector.push_back(string(PACKAGE_PIXMAPS_DIR) + "/" + pixmap);
+#endif
+
+  const string &file = searchFile(name_vector);
+  
+  if (file.empty())
+  {
+    throw FileNotFoundException(pixmap);
+  }
+  
+  return file;
 }
 
-const std::string searchPixmapFile(std::string pixmap_file)
+const std::string searchDataFile(const std::string &data)
 {
   vector <string> name_vector;
 
-  name_vector.push_back("pixmaps/" + pixmap_file);
-  name_vector.push_back(string(PACKAGE_SOURCE_DIR) + "/pixmaps/" + pixmap_file);
-  name_vector.push_back(string(PACKAGE_PIXMAPS_DIR) + "/" + pixmap_file);
+  name_vector.push_back("data/" + data);
 
-  return searchFile(name_vector);
+#ifdef HAVE_CONFIG_H  
+  name_vector.push_back(string(PACKAGE_SOURCE_DIR) + "/data/" + data);
+  name_vector.push_back(string(PACKAGE_DATA_DIR) + "/" + data);
+#endif
+
+  const string &file = searchFile(name_vector);
+  
+  if (file.empty())
+  {
+    throw FileNotFoundException(data);
+  }
+  
+  return file;
 }
 
 const std::string searchFile(std::vector <std::string> &name_vector)

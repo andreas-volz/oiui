@@ -5,8 +5,8 @@
 ##       - start OISPControl with correct joystick device as parameter or better autodetect
 ##       - OISPControl isn't killed by xsession en, because it has no X connection -> think about how to solve it. Maybe a oisp-stop script at E17 end.
 
-OISP_PATH=$HOME/src/git/openinfotainment/oisp/trunk/src
-OIUI_PATH=$HOME/src/git/openinfotainment/oiui/trunk/src/oiui
+OISP_PATH=$HOME/src/git/openinfotainment/oisp/src
+OIUI_PATH=$HOME/src/git/openinfotainment/oiui/src/oiui
 RESULUTION=800x480
 DATE_FORMAT=`date +%G-%m-%dT%H-%M-%SZ`
 LOGPATH=$HOME/.oi/log/$DATE_FORMAT
@@ -23,9 +23,9 @@ if [ $# == 1 ]; then
 if [ "$1" != "local" ]; then
 
   echo "Changing resolution..."
-  xrandr --newmode "840x525"   34.25  840 864 944 1048  525 528 538 547 -hsync +vsync
-  xrandr --addmode LVDS 840x525
-  xrandr -s 840x525
+  #xrandr --newmode "840x525"   34.25  840 864 944 1048  525 528 538 547 -hsync +vsync
+  #xrandr --addmode LVDS 840x525
+  #xrandr -s 840x525
 
 fi
 fi
@@ -38,11 +38,13 @@ dbus-monitor > $LOGPATH/dbus-monitor.log&
 cd $OIUI_PATH
 ./oiui > $LOGPATH/oiui.log 2>&1 &
 
-gpsfake -o "-S 122333" $OISP_PATH/../test/nmea/langen1.nmea&
+gpsfake -u "-P 122333" $OISP_PATH/../test/nmea/langen1.nmea&
 echo "gpsfake started..."
 
+sleep 3s
+
 cd $OISP_PATH/OISPNavigation_libosmscout
-./OISPNavigation_libosmscout --desktop > $LOGPATH/OISPNavigation.log 2>&1 &
+./OISPNavigation_libosmscout --desktop --g 122333 > $LOGPATH/OISPNavigation.log 2>&1 &
 
 cd $OISP_PATH/OISPMedia
 ./OISPMedia > $LOGPATH/OISPMedia.log 2>&1 &
@@ -60,7 +62,9 @@ else
 
   ## Dirty! Dirty! -> Workaround to kill all instances of OISPControl before starting again.
   killall OISPControl
+  killall OISPControl_keyb
   killall lt-OISPControl
+  killall lt-OISPControl_keyb
 
   cd $OISP_PATH/OISPControl/
   ./OISPControl > $LOGPATH/OISPControl.log 2>&1 &
