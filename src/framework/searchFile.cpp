@@ -15,14 +15,15 @@ using namespace std;
 /*const std::string searchEdjeFile(const std::string &theme)
 {
   vector <string> name_vector;
+  
+#ifdef HAVE_CONFIG_H 
+  name_vector.push_back(string(PACKAGE_DATA_DIR "/" DATA_THEME_DIR) + theme);
+  name_vector.push_back(string(PACKAGE_SOURCE_DIR) + "/data/" DATA_THEME_DIR + theme);
+#endif
 
   name_vector.push_back(theme);
   name_vector.push_back("../" + theme);
   
-#ifdef HAVE_CONFIG_H 
-  name_vector.push_back(string(PACKAGE_SOURCE_DIR) + "/data/" DATA_THEME_DIR + theme);
-  name_vector.push_back(string(PACKAGE_DATA_DIR "/" DATA_THEME_DIR) + theme);
-#endif
   const string &file = searchFile(name_vector);
 
   if (file.empty())
@@ -37,12 +38,12 @@ const std::string searchPixmapFile(const std::string &pixmap)
 {
   vector <string> name_vector;
 
-  name_vector.push_back("pixmaps/" + pixmap);
-
 #ifdef HAVE_CONFIG_H  
-  name_vector.push_back(string(PACKAGE_SOURCE_DIR) + "/pixmaps/" + pixmap);
   name_vector.push_back(string(PACKAGE_PIXMAPS_DIR) + "/" + pixmap);
+  name_vector.push_back(string(PACKAGE_SOURCE_DIR) + "/pixmaps/" + pixmap);
 #endif
+
+  name_vector.push_back("pixmaps/" + pixmap);
 
   const string &file = searchFile(name_vector);
   
@@ -58,12 +59,12 @@ const std::string searchDataFile(const std::string &data)
 {
   vector <string> name_vector;
 
-  name_vector.push_back("data/" + data);
-
 #ifdef HAVE_CONFIG_H  
-  name_vector.push_back(string(PACKAGE_SOURCE_DIR) + "/data/" + data);
   name_vector.push_back(string(PACKAGE_DATA_DIR) + "/" + data);
+  name_vector.push_back(string(PACKAGE_SOURCE_DIR) + "/data/" + data);
 #endif
+
+  name_vector.push_back("data/" + data);
 
   const string &file = searchFile(name_vector);
   
