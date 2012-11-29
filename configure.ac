@@ -64,6 +64,20 @@ else
   AC_MSG_RESULT(no)
 fi
 
+dnl Check for edce_cc
+EDJE_DEF=""
+AC_SUBST(EDJE_DEF)
+AC_ARG_WITH(edje-cc,
+        AC_HELP_STRING([--with-edje-cc=PATH],[Specify a specific path to edje_cc]),
+[
+  v=$withval;
+  edje_cc=$v
+  echo "  Enlightenment edje_cc explicitly set to "$edje_cc;
+],[
+  edje_cc=$(pkg-config --variable=prefix edje)/bin/edje_cc
+])
+AC_SUBST(edje_cc)
+
 
 #dnl Set PACKAGE SOURCE DIR in config.h.
 packagesrcdir=`cd $srcdir && pwd`
@@ -111,4 +125,8 @@ Makefile
 src/Makefile
 src/oiui/Makefile
 data/Makefile
+data/sm/Makefile
+data/sm/screens/Makefile
+data/sm/screens/images/Makefile
+data/sm/screens/fonts/Makefile
 ])
