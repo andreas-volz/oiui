@@ -7,8 +7,8 @@ FRAMEWORK = \
 	../framework/ControlListenerImpl.h\
 	../framework/EventHandler.cpp\
 	../framework/EventHandler.h\
-	../framework/Exceptions.cpp\
-	../framework/Exceptions.h\
+	../framework/FileNotFoundException.cpp\
+	../framework/FileNotFoundException.h\
 	../framework/MathUtil.h\
 	../framework/searchFile.cpp\
 	../framework/searchFile.h\
