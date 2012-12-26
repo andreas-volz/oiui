@@ -65,6 +65,8 @@
     <event name="oicf,axis,Y,min"/>
     <event name="oicf,axis,Y,max"/>
     <event name="oicf,axis,Y,zreo"/>
+    <event name="oicf,rotary,DDS,left"/>
+    <event name="oicf,rotary,DDS,right"/>
   </events>
   
   <variables>
@@ -177,14 +179,14 @@
         <map from="edje,Button14,clicked" to="MAP_ZOOM_OUT"/>
         <map from="edje,Button15,clicked" to="MAP_ZOOM_IN"/>
         <map from="edje,Button11,clicked" to="NAV_ROUTE_CALC"/>
-        <map from="oispkey,One,down" to="MAP_ZOOM_OUT"/>
-        <map from="oispkey,Two,down" to="MAP_ZOOM_IN"/>
+        <map from="oicf,rotary,DDS,left" to="MAP_ZOOM_OUT"/>
+        <map from="oicf,rotary,DDS,right" to="MAP_ZOOM_IN"/>
         <map from="oispkey,Start,down" to="MAP_JUMP_CURSOR"/>
         <map from="oispkey,Menu,down" to="NAVIGATION_ROUTE_2"/>
-        <map from="oispaxis,X,min" to="MAP_SCROLL_LEFT"/>
-        <map from="oispaxis,X,max" to="MAP_SCROLL_RIGHT"/>
-        <map from="oispaxis,Y,min" to="MAP_SCROLL_BOTTOM"/>
-        <map from="oispaxis,Y,max" to="MAP_SCROLL_TOP"/>
+        <map from="oicf,axis,X,min" to="MAP_SCROLL_LEFT"/>
+        <map from="oicf,axis,X,max" to="MAP_SCROLL_RIGHT"/>
+        <map from="oicf,axis,Y,min" to="MAP_SCROLL_BOTTOM"/>
+        <map from="oicf,axis,Y,max" to="MAP_SCROLL_TOP"/>
       </mappings>
     </view>
 

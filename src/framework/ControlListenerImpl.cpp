@@ -27,25 +27,23 @@ void ControlListenerImpl::onAxisListener(const AxisEvent &event)
   const int &number = event.number;
 
   StateMachineAccessor &StateMachineAccessor(StateMachineAccessor::getInstance());
-
-  cout << "onAxisListener" << endl;
-
-  /*if ((number == KeyEvent::X) && (value == KeyEvent::Min))
+  
+  if ((number == AxisEvent::X) && (value == AxisEvent::Min))
   {
-    StateMachineAccessor.pushEvent("oispaxis,X,min");
+    StateMachineAccessor.pushEvent("oicf,axis,X,min");
   }
-  else if ((number == KeyEvent::X) && (value == KeyEvent::Max))
+  else if ((number == AxisEvent::X) && (value == AxisEvent::Max))
   {
-    StateMachineAccessor.pushEvent("oispaxis,X,max");
+    StateMachineAccessor.pushEvent("oicf,axis,X,max");
   }
-  else if ((number == KeyEvent::Y) && (value == KeyEvent::Min))
+  else if ((number == AxisEvent::Y) && (value == AxisEvent::Min))
   {
-    StateMachineAccessor.pushEvent("oispaxis,Y,min");
+    StateMachineAccessor.pushEvent("oicf,axis,Y,min");
   }
-  else if ((number == KeyEvent::Y) && (value == KeyEvent::Max))
+  else if ((number == AxisEvent::Y) && (value == AxisEvent::Max))
   {
-    StateMachineAccessor.pushEvent("oispaxis,Y,max");
-  }*/
+    StateMachineAccessor.pushEvent("oicf,axis,Y,max");
+  }
 }
 
 void ControlListenerImpl::onButtonListener(const ButtonEvent &event)
@@ -55,8 +53,6 @@ void ControlListenerImpl::onButtonListener(const ButtonEvent &event)
   const int &number = event.number;
 
   StateMachineAccessor &StateMachineAccessor(StateMachineAccessor::getInstance());
-
-  cout << "key number: " << number << endl;
 
   if ((number == ButtonEvent::Navigation) && (value == ButtonEvent::Down))
   {
@@ -91,5 +87,19 @@ void ControlListenerImpl::onButtonListener(const ButtonEvent &event)
 
 void ControlListenerImpl::onRotaryListener(const RotaryEvent &event)
 {
+  const int &time = event.time;
+  const int &value = event.value;
+  const int &number = event.number;
+
+  StateMachineAccessor &StateMachineAccessor(StateMachineAccessor::getInstance());
+
+  if ((number == RotaryEvent::DDS) && (value == RotaryEvent::Left))
+  {
+    StateMachineAccessor.pushEvent("oicf,rotary,DDS,left");
+  }
+  else if ((number == RotaryEvent::DDS) && (value == RotaryEvent::Right))
+  {
+    StateMachineAccessor.pushEvent("oicf,rotary,DDS,right");
+  }
 
 }
