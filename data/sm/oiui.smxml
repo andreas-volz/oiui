@@ -12,18 +12,12 @@
     <event name="HK_TUNER"/>
     <event name="HK_MEDIA"/>
     <event name="HK_RETURN"/>
-    <event name="SK_1"/>
-    <event name="SK_2"/>
-    <event name="SK_3"/>
-    <event name="SK_4"/>
     <event name="NAV_MAIN"/>
     <event name="NAV_COUNTRY"/>
     <event name="NAV_CITY"/>
     <event name="NAV_STREET"/>
     <event name="NAV_INFO"/>
     <event name="NAV_ROUTE_CALC"/>
-    <event name="TUNER_LIST"/>
-    <event name="TUNER_FREQ"/>
     <event name="TEL_ARD"/>
     <event name="TEL_DIAL"/>
     <event name="MEDIA_LIST"/>
@@ -60,14 +54,19 @@
     <event name="edje,Button14,clicked"/>
     <event name="edje,Button15,clicked"/>
     <event name="edje,,load"/>
-    <event name="oispkey,One,down"/>
-    <event name="oispkey,Two,down"/>
-    <event name="oispkey,Start,down"/>
-    <event name="oispkey,Menu,down"/>
-    <event name="oispaxis,X,min"/>
-    <event name="oispaxis,X,max"/>
-    <event name="oispaxis,Y,min"/>
-    <event name="oispaxis,Y,max"/>
+    <event name="oicf,button,Navigation,down"/>
+    <event name="oicf,button,Menu,down"/>
+    <event name="oicf,button,Phone,down"/>
+    <event name="oicf,button,Media,down"/>
+    <event name="oicf,button,Return,down"/>
+    <event name="oicf,button,DDS,down"/>
+    <event name="oicf,button,Volume,down"/>
+    <event name="oicf,axis,X,min"/>
+    <event name="oicf,axis,X,max"/>
+    <event name="oicf,axis,X,zero"/>
+    <event name="oicf,axis,Y,min"/>
+    <event name="oicf,axis,Y,max"/>
+    <event name="oicf,axis,Y,zreo"/>
   </events>
   
   <variables>
@@ -127,20 +126,6 @@
         <state:view ref="NavRouteListView"/>
       </state:views>
     </state>
-    <state name="NavCountry" type="ViewState" parent="NavCompound" view="NavCountryView"/>
-    <state name="NavCity" type="ViewState" parent="NavCompound" view="NavCityView"/>
-    <state name="NavStreet" type="ViewState" parent="NavCompound" view="NavStreetView"/>
-    <state name="TunerCompound" type="CompoundState" parent="Root"/>
-    <state name="TunerInitial" type="InitialState" parent="TunerCompound"/>
-    <state name="TunerHistory" type="HistoryState" parent="TunerCompound"/>
-    <state name="TunerList" type="ViewState" parent="TunerCompound" view="TunerListView"/>
-    <state name="TunerFrequency" type="ViewState" parent="TunerCompound" view="TunerFrequencyView"/>
-    <state name="NavInfo" type="ViewState" parent="NavCompound" view="NavInfoView">
-      <state:actions>
-        <state:action ref="changeInfoLabel2" when="leave"/>
-      </state:actions>
-    </state>
-    <state name="TunerAvailable" type="DecisionState" parent="Root"/>
     <state name="MediaCompound" type="CompoundState" parent="Root"/>
     <state name="MediaInitial" type="InitialState" parent="MediaCompound"/>
     <state name="MediaMain" type="ViewState" parent="MediaCompound" view="MediaMainView">
@@ -155,20 +140,13 @@
     <transition from="Root" to="Finish" event="EXIT"/>
 		<transition from="Root" to="MenuCompound" event="HK_MENU"/>
     <transition from="Root" to="NavCompound" event="HK_NAV"/>
+    <transition from="Root" to="NavCompound" event="oicf,button,Navigation,down"/>
     <transition from="Root" to="TunerCompound" event="HK_TUNER"/>
     <transition from="Root" to="MediaCompound" event="HK_MEDIA"/>
     <transition from="MenuInitial" to="MenuMain"/>
     <transition from="NavInitial" to="NavMain"/>
     <transition from="NavCompound" to="NavMain" event="NAV_MAIN"/>
-    <transition from="NavCompound" to="NavCountry" event="NAV_COUNTRY"/>
-    <transition from="NavCompound" to="NavCity" event="NAV_CITY"/>
-    <transition from="NavCompound" to="NavStreet" event="NAV_STREET"/>
-    <transition from="NavCompound" to="NavInfo" event="NAV_INFO"/>
     <transition from="NavCompound" to="NavRouteCalc" event="NAV_ROUTE_CALC"/>
-    <transition from="TunerInitial" to="TunerHistory"/>
-    <transition from="TunerHistory" to="TunerList"/>
-    <transition from="TunerCompound" to="TunerList" event="TUNER_LIST"/>
-    <transition from="TunerCompound" to="TunerFrequency" event="TUNER_FREQ"/>
     <transition from="MediaInitial" to="MediaMain"/>
   </transitions>
   
@@ -247,75 +225,6 @@
         <widget name="HeadingValue" variable="HeadingValue"/>
       </widgets>
     </view>
-
-    <view name="NavCountryView">
-      <params>
-        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
-        <param key="groupname" value="navigation_country"/>
-      </params>
-      <mappings>
-        <map from="edje,Button01,clicked" to="NAV_CITY"/>
-      </mappings>
-    </view>
-    
-    <view name="NavCityView">
-      <params>
-        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
-        <param key="groupname" value="navigation_city"/>
-      </params>
-      <mappings>
-        <map from="edje,Button01,clicked" to="NAV_STREET"/>
-      </mappings>
-    </view>
-    
-    <view name="NavStreetView">
-      <params>
-        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
-        <param key="groupname" value="navigation_street"/>
-      </params>
-      <mappings>
-        <map from="edje,Button01,clicked" to="NAV_MAIN"/>
-      </mappings>
-    </view>
-
-    <view name="TunerListView">
-      <params>
-        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
-        <param key="groupname" value="tuner_list"/>
-      </params>
-      <mappings>
-        <map from="edje,Button01,clicked" to="HK_NAV"/>
-        <map from="edje,Button02,clicked" to="TUNER_FREQ"/>
-      </mappings>
-    </view>
-
-    <view name="TunerFrequencyView">
-      <params>
-        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
-        <param key="groupname" value="tuner_frequenz"/>
-      </params>
-      <mappings>
-        <map from="edje,Button01,clicked" to="TUNER_LIST"/>
-      </mappings>
-      <widgets>
-        <widget name="Slider01" variable="TunerFrequencySlider"/>
-      </widgets>
-    </view>
-    
-    <view name="NavInfoViewOld">
-      <params>
-        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
-        <param key="groupname" value="navigation_info"/>
-      </params>
-      <mappings>
-        <map from="edje,Button01,clicked" to="NAV_MAIN"/>
-      </mappings>
-      <widgets>
-        <widget name="Text_Example" variable="TextExampleString"/>
-        <widget name="Bubble01" variable="BubbleExample"/>
-        <widget name="Button02" variable="ButtonExample"/>
-      </widgets>
-    </view>    
     
     <view name="MediaMainView">
       <params>

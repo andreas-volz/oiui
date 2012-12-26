@@ -10,8 +10,9 @@ public:
 
   ControlListenerImpl(DBus::Connection &connection);
 
-  void onAxisListener(const KeyEvent &eventAxis);
-  void onButtonListener(const KeyEvent &eventButton);
+  void onAxisListener(const AxisEvent &event);
+  void onButtonListener(const ButtonEvent &event);
+  void onRotaryListener(const RotaryEvent &event);
 
 private:
 

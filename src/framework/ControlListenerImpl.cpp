@@ -20,17 +20,17 @@ ControlListenerImpl::ControlListenerImpl(DBus::Connection &connection)
 {
 }
 
-void ControlListenerImpl::onAxisListener(const KeyEvent &eventAxis)
+void ControlListenerImpl::onAxisListener(const AxisEvent &event)
 {
-  const int &time = eventAxis.time;
-  const int &value = eventAxis.value;
-  const int &number = eventAxis.number;
+  const int &time = event.time;
+  const int &value = event.value;
+  const int &number = event.number;
 
   StateMachineAccessor &StateMachineAccessor(StateMachineAccessor::getInstance());
 
   cout << "onAxisListener" << endl;
 
-  if ((number == KeyEvent::X) && (value == KeyEvent::Min))
+  /*if ((number == KeyEvent::X) && (value == KeyEvent::Min))
   {
     StateMachineAccessor.pushEvent("oispaxis,X,min");
   }
@@ -45,41 +45,51 @@ void ControlListenerImpl::onAxisListener(const KeyEvent &eventAxis)
   else if ((number == KeyEvent::Y) && (value == KeyEvent::Max))
   {
     StateMachineAccessor.pushEvent("oispaxis,Y,max");
-  }
+  }*/
 }
 
-void ControlListenerImpl::onButtonListener(const KeyEvent &eventButton)
+void ControlListenerImpl::onButtonListener(const ButtonEvent &event)
 {
-  const int &time = eventButton.time;
-  const int &value = eventButton.value;
-  const int &number = eventButton.number;
+  const int &time = event.time;
+  const int &value = event.value;
+  const int &number = event.number;
 
   StateMachineAccessor &StateMachineAccessor(StateMachineAccessor::getInstance());
 
   cout << "key number: " << number << endl;
 
-  if ((number == KeyEvent::Navigation) && (value == KeyEvent::Down))
+  if ((number == ButtonEvent::Navigation) && (value == ButtonEvent::Down))
   {
-    StateMachineAccessor.pushEvent("HK_NAV");
+    StateMachineAccessor.pushEvent("oicf,button,Navigation,down");
   }
-  else if ((number == KeyEvent::Media) && (value == KeyEvent::Down))
+  else if ((number == ButtonEvent::Media) && (value == ButtonEvent::Down))
   {
-    StateMachineAccessor.pushEvent("HK_MEDIA");
+    StateMachineAccessor.pushEvent("oicf,button,Media,down");
   }
-  else if ((number == KeyEvent::One) && (value == KeyEvent::Down))
+  else if ((number == ButtonEvent::Menu) && (value == ButtonEvent::Down))
   {
-    StateMachineAccessor.pushEvent("oispkey,One,down");
+    StateMachineAccessor.pushEvent("oicf,button,Menu,down");
   }
-  else if ((number == KeyEvent::Two) && (value == KeyEvent::Down))
+  else if ((number == ButtonEvent::Phone) && (value == ButtonEvent::Down))
   {
-    StateMachineAccessor.pushEvent("oispkey,Two,down");
+    StateMachineAccessor.pushEvent("oicf,button,Phone,down");
   }
-  else if ((number == KeyEvent::Start) && (value == KeyEvent::Down))
+  else if ((number == ButtonEvent::Return) && (value == ButtonEvent::Down))
   {
-    StateMachineAccessor.pushEvent("oispkey,Start,down");
+    StateMachineAccessor.pushEvent("oicf,button,Return,down");
   }
-  else if ((number == KeyEvent::Menu) && (value == KeyEvent::Down))
+  else if ((number == ButtonEvent::DDS) && (value == ButtonEvent::Down))
   {
-    StateMachineAccessor.pushEvent("oispkey,Menu,down");
+    StateMachineAccessor.pushEvent("oicf,button,DDS,down");
   }
+  else if ((number == ButtonEvent::Volume) && (value == ButtonEvent::Down))
+  {
+    StateMachineAccessor.pushEvent("oicf,button,Volume,down");
+  }
+  
+}
+
+void ControlListenerImpl::onRotaryListener(const RotaryEvent &event)
+{
+
 }
