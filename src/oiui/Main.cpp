@@ -8,6 +8,7 @@
 /* Project Framework */
 #include "../framework/EventHandler.h"
 #include "../framework/searchFile.h"
+#include "../framework/Logger.h"
 
 /* HMI Applications */
 #include "../navigation/Navigation.h"
@@ -18,18 +19,7 @@
 #include "../media/MediaListenerImpl.h"
 #include "../navigation/NavigationListenerImpl.h"
 
-/* log4cxx */
-#ifdef HAVE_LOG4CXX
-#include "log4cxx/logger.h"
-#include "log4cxx/basicconfigurator.h"
-#include "log4cxx/propertyconfigurator.h"
-#include "log4cxx/helpers/exception.h"
-#endif // HAVE_LOG4CXX
-
-#ifdef HAVE_LOG4CXX
-using namespace log4cxx;
-using namespace log4cxx::helpers;
-#endif // HAVE_LOG4CXX
+Logger logger("oiui.Main");
 
 Main::Main(int argc, const char **argv) :
   mSMToDBusPipe(NULL)
@@ -40,8 +30,7 @@ Main::Main(int argc, const char **argv) :
   Glib::Thread *thread = Glib::Thread::create(sigc::mem_fun(this, &Main::DBusMainLoop), false);
 
 #ifdef HAVE_LOG4CXX
-  //BasicConfigurator::configure ();
-  PropertyConfigurator::configure(searchDataFile("logging.prop"));
+  log4cxx::PropertyConfigurator::configure(searchDataFile("logging.prop"));
 #endif // HAVE_LOG4CXX
 
   // deactivate screensaver function
@@ -51,11 +40,11 @@ Main::Main(int argc, const char **argv) :
   //Ecorexx::XWindow *xwin = mWindow.getXWindow ();
   //xwin->setNetWMWindowType (Ecorexx::XWindow::Menu);
 
-  cout << "OISPInterface server started..." << endl;
-
+  LOG4CXX_INFO(logger, "OISPInterface server started...");
+  
   // *** STATE MACHINE ***
   StateMachineAccessor &stateMachineAccessor(StateMachineAccessor::getInstance());
-  cout << "smxml: " << searchDataFile("sm/oiui.smxml") << endl;
+  LOG4CXX_INFO(logger, "smxml: " + searchDataFile("sm/oiui.smxml"));
   stateMachineAccessor.load("smxml", searchDataFile("sm/oiui.smxml"));
 
   stateMachineAccessor.connect(sigc::mem_fun(this, &Main::smSignals));

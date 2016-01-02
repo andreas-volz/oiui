@@ -12,7 +12,8 @@ FRAMEWORK = \
 	../framework/MathUtil.h\
 	../framework/searchFile.cpp\
 	../framework/searchFile.h\
-	../framework/util.h
+	../framework/util.h\
+        ../Logger.h
 
 NAVIGATION = \
 	../navigation/Navigation.cpp\
