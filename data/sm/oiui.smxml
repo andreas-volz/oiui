@@ -51,6 +51,7 @@
     <event name="edje,Button13,clicked"/>
     <event name="edje,Button14,clicked"/>
     <event name="edje,Button15,clicked"/>
+    <event name="edje,NavRouteCalcViewButtonLast,clicked"/>
     <event name="edje,,load"/>
     <event name="oicf,button,Navigation,down"/>
     <event name="oicf,button,Menu,down"/>
@@ -92,7 +93,6 @@
       <variable type="String" value="Third Element"/>
     </variable>
     <variable name="MediaListTitle" type="String" value="Original Title"/>
-
     <variable name="LongitudeValue" type="String" value="-"/>
     <variable name="LatitudeValue" type="String" value="-"/>
     <variable name="SpeedValue" type="String" value="-"/>
@@ -108,9 +108,9 @@
     <state name="Root" type="CompoundState"/>
     <state name="Initial" type="InitialState" parent="Root"/>
     <state name="Finish" type="FinalState" parent="Root"/>
-		<state name="MenuCompound" type="CompoundState" parent="Root"/>
-		<state name="MenuInitial" type="InitialState" parent="MenuCompound"/>
-		<state name="MenuMain" type="ViewState" parent="MenuCompound" view="MenuMainView"/>
+    <state name="MenuCompound" type="CompoundState" parent="Root"/>
+    <state name="MenuInitial" type="InitialState" parent="MenuCompound"/>
+    <state name="MenuMain" type="ViewState" parent="MenuCompound" view="MenuMainView"/>
     <state name="NavCompound" type="CompoundState" parent="Root"/>
     <state name="NavInitial" type="InitialState" parent="NavCompound"/>
     <state name="NavMain" type="ViewState" parent="NavCompound">
@@ -126,6 +126,12 @@
         <state:view ref="NavRouteListView"/>
       </state:views>
     </state>
+    <state name="NavLastDest" type="ViewState" parent="NavCompound">
+      <state:views>
+        <state:view ref="NavMainView"/>
+        <state:view ref="NavLastDestView"/>
+      </state:views>
+    </state>
     <state name="MediaCompound" type="CompoundState" parent="Root"/>
     <state name="MediaInitial" type="InitialState" parent="MediaCompound"/>
     <state name="MediaMain" type="ViewState" parent="MediaCompound" view="MediaMainView">
@@ -138,7 +144,7 @@
   <transitions>
     <transition from="Initial" to="MenuCompound"/>
     <transition from="Root" to="Finish" event="EXIT"/>
-		<transition from="Root" to="MenuCompound" event="app,Menu"/>
+    <transition from="Root" to="MenuCompound" event="app,Menu"/>
     <transition from="Root" to="MenuCompound" event="oicf,button,Menu,down"/>
     <transition from="Root" to="NavCompound" event="app,Navigation"/>
     <transition from="Root" to="NavCompound" event="oicf,button,Navigation,down"/>
@@ -148,6 +154,7 @@
     <transition from="NavInitial" to="NavMain"/>
     <transition from="NavCompound" to="NavMain" event="NAV_MAIN"/>
     <transition from="NavCompound" to="NavRouteCalc" event="NAV_ROUTE_CALC"/>
+    <transition from="NavCompound" to="NavLastDest" event="edje,NavRouteCalcViewButtonLast,clicked"/>
     <transition from="MediaInitial" to="MediaMain"/>
   </transitions>
   
@@ -164,8 +171,8 @@
       </params>
       <mappings>
         <map from="edje,Button01,clicked" to="app,Navigation"/>
-				<map from="edje,Button02,clicked" to="app,Media"/>
-				<map from="edje,Button03,clicked" to="EXIT"/>
+        <map from="edje,Button02,clicked" to="app,Media"/>
+        <map from="edje,Button03,clicked" to="EXIT"/>
       </mappings>
     </view>
 
@@ -207,6 +214,15 @@
       <params>
         <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
         <param key="groupname" value="NavRouteListView"/>
+      </params>
+      <mappings>
+      </mappings>
+    </view>
+
+   <view name="NavLastDestView">
+      <params>
+        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
+        <param key="groupname" value="NavLastDestView"/>
       </params>
       <mappings>
       </mappings>

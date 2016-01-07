@@ -14,6 +14,7 @@ images {
    image: "media_bg.png" COMP;
    image: "upper_bar.png" COMP;
    image: "nav_main_icon.png" COMP;
+   image: "navigation_poi.png" COMP;
    image: "media_main_icon.png" COMP;
    image: "shutdown.png" COMP;
    image: "menu_icon.png" COMP;

@@ -22,5 +22,6 @@ EXTRA_DIST = \
 						shutdown.png \
 						sidebar.png \
 						upper_bar.png \
-						white_border.png
+						white_border.png \
+						navigation_poi.png
 
