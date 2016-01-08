@@ -226,6 +226,9 @@
       </params>
       <mappings>
       </mappings>
+      <widgets>
+        <widget name="List01" variable="ListExample"/>
+      </widgets>
     </view>
     
     <view name="NavInfoView">
@@ -256,7 +259,7 @@
         <map from="edje,Button04,clicked" to="CHANGE_MEDIA_TITLE"/>
       </mappings>
       <widgets>
-        <widget name="List01" variable="ListExample"/>
+        <!--<widget name="List01" variable="ListExample"/>-->
         <widget name="Text01" variable="MediaListTitle"/>
       </widgets>
     </view>
