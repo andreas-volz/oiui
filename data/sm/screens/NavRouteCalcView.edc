@@ -5,6 +5,79 @@
        item: "pref_size" "800x480";
     }
     parts {
+       part { name: "NavRouteCalcViewButtonAdr";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             fixed: 1 1;
+             rel1 {
+                offset: 600 428;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 645 473;
+             }
+             params {
+                string: "style" "default";
+                string: "label" "ADR";
+             }
+          }
+       }
+       part { name: "NavRouteCalcViewButtonPOI";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             fixed: 1 1;
+             rel1 {
+                offset: 650 428;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 695 473;
+             }
+             params {
+                string: "style" "default";
+                //string: "label" "POI";
+		string: "icon" "NavigationPOIIcon";
+             }
+          }
+       }
+       part { name: "NavRouteCalcViewButtonLast";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             fixed: 1 1;
+             rel1 {
+                offset: 700 428;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 745 473;
+             }
+             params {
+                string: "style" "default";
+                string: "label" "Last";
+             }
+          }
+       }
+       part { name: "NavRouteCalcViewButtonOpt";
+          type: EXTERNAL;
+          source: "elm/button";
+          description { state: "default" 0;
+             fixed: 1 1;
+             rel1 {
+                offset: 750 428;
+             }
+             rel2 {
+                relative: 0 0;
+                offset: 795 473;
+             }
+             params {
+                string: "style" "default";
+                string: "label" "OPT";
+             }
+          }
+       }
        part { name: "Button08";
           type: EXTERNAL;
           source: "elm/button";

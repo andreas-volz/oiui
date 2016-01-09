@@ -25,6 +25,7 @@ collections {
    #include "icons.edc"
 
    #include "MediaMainView.edc"
+   #include "NavLastDestView.edc"
    #include "MenuMainView.edc"
    #include "NavMainView.edc"
    #include "NavInfoView.edc"

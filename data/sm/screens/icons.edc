@@ -223,3 +223,25 @@ group { name: "NavZoomMinusIcon";
        }
     }
  }
+ group { name: "NavigationPOIIcon";
+    data {
+       item: "pref_size" "500x500";
+    }
+    parts {
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                offset: 0 0;
+             }
+             image {
+                normal: "navigation_poi.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+ }
