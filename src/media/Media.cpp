@@ -49,7 +49,7 @@ void Media::changeMediaTitle()
   // TODO: This code could maybe changed in some widget action magic
 
   StateMachineAccessor &stateMachineAccessor = StateMachineAccessor::getInstance();
-  AbstractVariable *av = stateMachineAccessor.getVariable("MediaListTitle");
+  Variable *av = stateMachineAccessor.getVariable("MediaListTitle");
   assert(av);
   String *st = static_cast <String *>(av);
   static int count = 0;

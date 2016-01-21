@@ -27,23 +27,23 @@ void NavigationListenerImpl::updateGPSPositionWGS84(const CoordWGS84 &pos)
   cerr << "updateGPSPositionWGS84" << endl;
 
   StateMachineAccessor &stateMachineAccessor = StateMachineAccessor::getInstance();
-  AbstractVariable *av = stateMachineAccessor.getVariable("LatitudeValue");
+  Variable *av = stateMachineAccessor.getVariable("LatitudeValue");
   assert(av);
   String *latitudeValue = static_cast <String*>(av);
   latitudeValue->change (toStringWide (pos.latitude, 4));
 
-  AbstractVariable *av2 = stateMachineAccessor.getVariable("LongitudeValue");
+  Variable *av2 = stateMachineAccessor.getVariable("LongitudeValue");
   assert(av2);
   String *longitudeValue = static_cast <String*>(av2);
   longitudeValue->change (toStringWide (pos.longitude, 4));
 
-  AbstractVariable *av3 = stateMachineAccessor.getVariable("SpeedValue");
+  Variable *av3 = stateMachineAccessor.getVariable("SpeedValue");
   assert(av3);
   String *speedValue = static_cast <String*>(av3);
   string str (toStringWide (pos.speed * 1000.0 / 60.0, 4));
   speedValue->change (str + " km/h");
 
-  AbstractVariable *av4 = stateMachineAccessor.getVariable("HeadingValue");
+  Variable *av4 = stateMachineAccessor.getVariable("HeadingValue");
   assert(av4);
   String *headingValue = static_cast <String*>(av4);
   headingValue->change (toStringWide (pos.track, 4) + " °");

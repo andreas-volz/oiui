@@ -21,6 +21,8 @@
 
 Logger logger("oiui.Main");
 
+using namespace std;
+
 Main::Main(int argc, const char **argv) :
   mSMToDBusPipe(NULL)
 {

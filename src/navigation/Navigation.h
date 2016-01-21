@@ -30,6 +30,8 @@ private:
 
   void smCommandMapJumpCursor();
 
+  void smCommandActivateLastDestination();
+
   void smCommandNavigationRoute1();
   void smCommandNavigationRoute2();
   void smCommandNavigationRoute3();

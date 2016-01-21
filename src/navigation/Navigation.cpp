@@ -9,6 +9,9 @@
 /* STD */
 #include <iostream>
 
+/* stateval */
+#include <stateval/stateval.h>
+
 using namespace std;
 
 Navigation::Navigation(OICFNavigation &oicfNavigation) :
@@ -25,6 +28,7 @@ Navigation::Navigation(OICFNavigation &oicfNavigation) :
   eventHandler.connect("NAVIGATION_ROUTE_1", sigc::mem_fun(this, &Navigation::smCommandNavigationRoute1));
   eventHandler.connect("NAVIGATION_ROUTE_2", sigc::mem_fun(this, &Navigation::smCommandNavigationRoute2));
   eventHandler.connect("NAVIGATION_ROUTE_3", sigc::mem_fun(this, &Navigation::smCommandNavigationRoute3));
+  eventHandler.connect("NAV_ACTIVATE_LAST_DESTINATION", sigc::mem_fun(this, &Navigation::smCommandActivateLastDestination));
 }
 
 void Navigation::smCommandZoomIn()
@@ -62,6 +66,32 @@ void Navigation::smCommandScrollBottom()
 void Navigation::smCommandMapJumpCursor()
 {
   mOICFNavigation.jumpToPointer();
+}
+
+void Navigation::smCommandActivateLastDestination()
+{
+  cout << "smCommandActivateLastDestination" << endl;
+
+  StateMachineAccessor &stateMachineAccessor = StateMachineAccessor::getInstance();
+  Variable *av = stateMachineAccessor.getVariable("NavLastDestList");
+  assert(av);
+  if(av->getType() == Variable::TYPE_LIST)
+  {
+    List *lst = static_cast <List *>(av);
+    
+    for (List::Iterator ls_it = lst->begin();
+       ls_it != lst->end();
+       ++ls_it)
+    {
+      Variable* avElem = *ls_it;
+
+      if(avElem->getType() == Variable::TYPE_STRING)
+      {
+        String *str =  static_cast <String *>(avElem);
+        cout << "Destination: " << str->getData() << endl;
+      }
+    }
+  }
 }
 
 void Navigation::smCommandNavigationRoute1()

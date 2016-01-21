@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE stateval PUBLIC "stateval" "http://stateval.googlecode.com/svn/trunk/stateval/data/xml/stateval.dtd">
+<!DOCTYPE stateval PUBLIC "stateval" "/home/andreas/src/git/stateval/stateval/data/xml/stateval.dtd">
 
 <stateval xmlns:state="stateval">
 
@@ -16,6 +16,7 @@
     <event name="NAV_STREET"/>
     <event name="NAV_INFO"/>
     <event name="NAV_ROUTE_CALC"/>
+    <event name="NAV_ACTIVATE_LAST_DESTINATION"/>
     <event name="TEL_ARD"/>
     <event name="TEL_DIAL"/>
     <event name="MEDIA_LIST"/>
@@ -51,6 +52,7 @@
     <event name="edje,Button13,clicked"/>
     <event name="edje,Button14,clicked"/>
     <event name="edje,Button15,clicked"/>
+    <event name="edje,List01,mouse,clicked,1"/>
     <event name="edje,NavRouteCalcViewButtonLast,clicked"/>
     <event name="edje,,load"/>
     <event name="oicf,button,Navigation,down"/>
@@ -85,12 +87,17 @@
     <variable name="AfterLeave" type="String" value="...and now changing after leave..."/>
     <variable name="TunerFrequencySlider" type="Struct">
       <variable name="label" type="String" value="stateval changed label"/>
-      <variable name="value" type="Float" value="99.0"/>
+      <variable name="value" type="Double" value="99.0"/>
     </variable>
     <variable name="ListExample" type="List">
       <variable type="String" value="First Element"/>
       <variable type="String" value="Second Element"/>
       <variable type="String" value="Third Element"/>
+    </variable>
+    <variable name="NavLastDestList" type="List">
+      <variable type="String" value="Babenhausen, VDO Strasse"/>
+      <variable type="String" value="Brachttal, Schaeferweg"/>
+      <variable type="String" value="Gedern, Wiesenweg"/>
     </variable>
     <variable name="MediaListTitle" type="String" value="Original Title"/>
     <variable name="LongitudeValue" type="String" value="-"/>
@@ -225,9 +232,10 @@
         <param key="groupname" value="NavLastDestView"/>
       </params>
       <mappings>
+        <map from="edje,List01,mouse,clicked,1" to="NAV_ACTIVATE_LAST_DESTINATION"/>
       </mappings>
       <widgets>
-        <widget name="List01" variable="ListExample"/>
+        <widget name="List01" variable="NavLastDestList"/>
       </widgets>
     </view>
     

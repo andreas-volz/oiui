@@ -26,7 +26,7 @@ void MediaListenerImpl::getWindowListResult(const LineVector &titleList, const i
   cout << "receive MediaListenerImpl::getWindowListResult" << endl;
 
   StateMachineAccessor &stateMachineAccessor = StateMachineAccessor::getInstance();
-  AbstractVariable *av = stateMachineAccessor.getVariable("ListExample");
+  Variable *av = stateMachineAccessor.getVariable("ListExample");
   assert(av);
   List *li = static_cast <List*>(av);
   li->clear();
@@ -38,7 +38,8 @@ void MediaListenerImpl::getWindowListResult(const LineVector &titleList, const i
     const Line &l = *vs_it;
 
     cout << "ID: " << l.id << " Name: " << l.name << endl;
-    String *st = new String(l.name);
+    String *st = new String();
+    st->change(l.name);
     li->pushBack(st);
   }
 
