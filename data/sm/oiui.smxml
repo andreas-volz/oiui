@@ -94,6 +94,11 @@
       <variable type="String" value="Second Element"/>
       <variable type="String" value="Third Element"/>
     </variable>
+    <variable name="ListExample2" type="List">
+      <variable type="String" value="Iron Maiden"/>
+      <variable type="String" value="Doro"/>
+      <variable type="String" value="ACDC"/>
+    </variable>
     <variable name="NavLastDestList" type="List">
       <variable type="String" value="Babenhausen, VDO Strasse"/>
       <variable type="String" value="Brachttal, Schaeferweg"/>
@@ -107,8 +112,7 @@
   </variables>
   
   <actions>
-    <action name="changeInfoLabel" type="ChangeVariableAction" variable="TextExampleString" copy="NewInfo"/>
-    <action name="changeInfoLabel2" type="ChangeVariableAction" variable="TextExampleString" copy="AfterLeave"/>
+    <action name="changeMediaList" type="ChangeVariableAction" variable="ListExample2" view="MediaMainView" widget="List01"/>
   </actions>
   
   <states>
@@ -143,7 +147,7 @@
     <state name="MediaInitial" type="InitialState" parent="MediaCompound"/>
     <state name="MediaMain" type="ViewState" parent="MediaCompound" view="MediaMainView">
       <state:actions>
-        <state:action ref="changeInfoLabel" when="enter"/>
+        <state:action ref="changeMediaList" when="leave"/>
       </state:actions>
     </state>
   </states>
@@ -267,8 +271,7 @@
         <map from="edje,Button04,clicked" to="CHANGE_MEDIA_TITLE"/>
       </mappings>
       <widgets>
-        <!--<widget name="List01" variable="ListExample"/>-->
-        <widget name="Text01" variable="MediaListTitle"/>
+        <widget name="List01" variable="ListExample"/>
       </widgets>
     </view>
   </viewmanager>
