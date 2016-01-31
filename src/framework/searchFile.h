@@ -5,8 +5,8 @@
 #include <vector>
 
 // public search functions
-const std::string searchEdjeFile(const std::string &theme);
 const std::string searchPixmapFile(const std::string &pixmap);
+const std::string searchDataDir(const std::string &data);
 const std::string searchDataFile(const std::string &data);
 
 // private

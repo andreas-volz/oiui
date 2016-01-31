@@ -46,6 +46,11 @@ Main::Main(int argc, const char **argv) :
   
   // *** STATE MACHINE ***
   StateMachineAccessor &stateMachineAccessor(StateMachineAccessor::getInstance());
+  
+  const std::string &dataLoadDir = searchDataDir("sm/oiui.smxml");
+  LOG4CXX_INFO(logger, "dataLoadDir: " << dataLoadDir);
+  stateMachineAccessor.setDataLoadDir(dataLoadDir);
+
   LOG4CXX_INFO(logger, "smxml: " + searchDataFile("sm/oiui.smxml"));
   stateMachineAccessor.load("smxml", searchDataFile("sm/oiui.smxml"));
 

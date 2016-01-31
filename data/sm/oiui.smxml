@@ -112,7 +112,7 @@
   </variables>
   
   <actions>
-    <action name="changeMediaList" type="ChangeVariableAction" variable="ListExample2" view="MediaMainView" widget="List01"/>
+    <action name="changeMediaList" type="ChangeWidgetVariableAction" variable="ListExample2" view="MediaMainView" widget="List01"/>
   </actions>
   
   <states>
@@ -177,7 +177,7 @@
     
   	<view name="MenuMainView">
       <params>
-        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
+        <param key="filename" value="screens/oiui_screens.edj"/>
         <param key="groupname" value="MenuMainView"/>
       </params>
       <mappings>
@@ -189,7 +189,7 @@
 
     <view name="NavMainView">
       <params>
-        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
+        <param key="filename" value="screens/oiui_screens.edj"/>
         <param key="groupname" value="NavMainView"/>
       </params>
       <mappings>
@@ -210,7 +210,7 @@
 
     <view name="NavRouteCalcView">
       <params>
-        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
+        <param key="filename" value="screens/oiui_screens.edj"/>
         <param key="groupname" value="NavRouteCalcView"/>
       </params>
       <mappings>
@@ -223,7 +223,7 @@
     
     <view name="NavRouteListView">
       <params>
-        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
+        <param key="filename" value="screens/oiui_screens.edj"/>
         <param key="groupname" value="NavRouteListView"/>
       </params>
       <mappings>
@@ -232,7 +232,7 @@
 
    <view name="NavLastDestView">
       <params>
-        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
+        <param key="filename" value="screens/oiui_screens.edj"/>
         <param key="groupname" value="NavLastDestView"/>
       </params>
       <mappings>
@@ -245,7 +245,7 @@
     
     <view name="NavInfoView">
       <params>
-        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
+        <param key="filename" value="screens/oiui_screens.edj"/>
         <param key="groupname" value="NavInfoView"/>
       </params>
       <mappings>
@@ -260,7 +260,7 @@
     
     <view name="MediaMainView">
       <params>
-        <param key="filename" value="/home/andreas/src/git/openinfotainment/oiui/data/sm/screens/oiui_screens.edj"/>
+        <param key="filename" value="screens/oiui_screens.edj"/>
         <param key="groupname" value="MediaMainView"/>
       </params>
       <mappings>

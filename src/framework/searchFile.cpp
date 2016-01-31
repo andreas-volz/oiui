@@ -2,37 +2,18 @@
 #include <config.h>
 #endif
 
+/* STD */
+#include <libgen.h>
+#include <cstring>
+#include <cstdlib>
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <iostream>
 #include "searchFile.h"
 #include "FileNotFoundException.h"
 
-//#define DATA_THEME_DIR "themes/elm/"
-
 using namespace std;
-
-/*const std::string searchEdjeFile(const std::string &theme)
-{
-  vector <string> name_vector;
-  
-#ifdef HAVE_CONFIG_H 
-  name_vector.push_back(string(PACKAGE_DATA_DIR "/" DATA_THEME_DIR) + theme);
-  name_vector.push_back(string(PACKAGE_SOURCE_DIR) + "/data/" DATA_THEME_DIR + theme);
-#endif
-
-  name_vector.push_back(theme);
-  name_vector.push_back("../" + theme);
-  
-  const string &file = searchFile(name_vector);
-
-  if (file.empty())
-  {
-    throw FileNotFoundException(theme);
-  }
-
-  return file;
-}*/
 
 const std::string searchPixmapFile(const std::string &pixmap)
 {
@@ -74,6 +55,33 @@ const std::string searchDataFile(const std::string &data)
   }
   
   return file;
+}
+
+const std::string searchDataDir(const std::string &data)
+{
+  vector <string> name_vector;
+
+#ifdef HAVE_CONFIG_H  
+  name_vector.push_back(string(PACKAGE_DATA_DIR) + "/" + data);
+  name_vector.push_back(string(PACKAGE_SOURCE_DIR) + "/data/" + data);
+#endif
+
+  name_vector.push_back("data/" + data);
+  name_vector.push_back(data);  
+
+  const string &file = searchFile(name_vector);
+  
+  if (file.empty())
+  {
+    throw FileNotFoundException(data);
+  }
+
+  char *file_c = strdup(file.c_str());
+  char *dir_c = dirname(file_c);
+  string dir(dir_c);
+  free(file_c);
+  
+  return dir;
 }
 
 const std::string searchFile(std::vector <std::string> &name_vector)
