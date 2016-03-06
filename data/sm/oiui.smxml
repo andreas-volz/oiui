@@ -112,7 +112,7 @@
   </variables>
   
   <actions>
-    <action name="changeMediaList" type="ChangeWidgetVariableAction" variable="ListExample2" view="MediaMainView" widget="List01"/>
+    <!--<action name="changeMediaList" type="ChangeWidgetPropertyAction" variable="ListExample2" view="MediaMainView" widget="List01"/>-->
   </actions>
   
   <states>
@@ -147,7 +147,7 @@
     <state name="MediaInitial" type="InitialState" parent="MediaCompound"/>
     <state name="MediaMain" type="ViewState" parent="MediaCompound" view="MediaMainView">
       <state:actions>
-        <state:action ref="changeMediaList" when="leave"/>
+        <!--<state:action ref="changeMediaList" when="leave"/>-->
       </state:actions>
     </state>
   </states>
@@ -199,8 +199,6 @@
         <map from="edje,Button11,clicked" to="NAV_ROUTE_CALC"/>
         <map from="oicf,rotary,DDS,left" to="MAP_ZOOM_OUT"/>
         <map from="oicf,rotary,DDS,right" to="MAP_ZOOM_IN"/>
-        <map from="oispkey,Start,down" to="MAP_JUMP_CURSOR"/>
-        <map from="oispkey,Menu,down" to="NAVIGATION_ROUTE_2"/>
         <map from="oicf,axis,X,min" to="MAP_SCROLL_LEFT"/>
         <map from="oicf,axis,X,max" to="MAP_SCROLL_RIGHT"/>
         <map from="oicf,axis,Y,min" to="MAP_SCROLL_BOTTOM"/>
@@ -239,7 +237,7 @@
         <map from="edje,List01,mouse,clicked,1" to="NAV_ACTIVATE_LAST_DESTINATION"/>
       </mappings>
       <widgets>
-        <widget name="List01" variable="NavLastDestList"/>
+        <widget name="List01"/>
       </widgets>
     </view>
     
@@ -250,12 +248,12 @@
       </params>
       <mappings>
       </mappings>
-      <widgets>
+      <!--<widgets>
         <widget name="LatitudeValue" variable="LatitudeValue"/>
         <widget name="LongitudeValue" variable="LongitudeValue"/>
         <widget name="SpeedValue" variable="SpeedValue"/>
         <widget name="HeadingValue" variable="HeadingValue"/>
-      </widgets>
+      </widgets>-->
     </view>
     
     <view name="MediaMainView">
@@ -271,7 +269,7 @@
         <map from="edje,Button04,clicked" to="CHANGE_MEDIA_TITLE"/>
       </mappings>
       <widgets>
-        <widget name="List01" variable="ListExample"/>
+        <widget name="List01"/>
       </widgets>
     </view>
   </viewmanager>
