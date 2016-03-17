@@ -269,7 +269,9 @@
         <map from="edje,Button04,clicked" to="CHANGE_MEDIA_TITLE"/>
       </mappings>
       <widgets>
-        <widget name="List01"/>
+        <widget name="List01">
+          <property name="list" variable="ListExample2"/>
+        </widget>
       </widgets>
     </view>
   </viewmanager>

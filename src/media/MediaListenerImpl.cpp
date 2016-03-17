@@ -19,6 +19,12 @@ using namespace std;
 MediaListenerImpl::MediaListenerImpl(DBus::Connection &connection) :
   OICFMediaListener(connection)
 {
+  StateMachineAccessor &stateMachineAccessor = StateMachineAccessor::getInstance();
+
+  Widget *w1 = stateMachineAccessor.getWidget("MediaMainView", "List01");
+
+  w1->setWidgetRender(renderer1);
+  
 }
 
 void MediaListenerImpl::getWindowListResult(const LineVector &titleList, const int32_t &start, const int32_t &end, const int32_t &size)

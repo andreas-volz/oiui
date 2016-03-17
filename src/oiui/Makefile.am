@@ -26,7 +26,9 @@ MEDIA = \
 	../media/Media.cpp\
 	../media/Media.h\
 	../media/MediaListenerImpl.cpp\
-	../media/MediaListenerImpl.h
+	../media/MediaListenerImpl.h\
+	../media/MediaListWidgetRenderer.cpp\
+	../media/MediaListWidgetRenderer.h
 
 oiui_SOURCES = \
 	${FRAMEWORK}\
@@ -41,6 +43,7 @@ oiui_LDADD = \
 	$(OICF_LIBS) \
 	$(GLIBMM_LIBS) \
 	$(SIGC_LIBS) \
+	$(EFL_LIBS) \
 	$(LOG4CXX_LIBS)
 
 oiui_CPPFLAGS = \
@@ -49,6 +52,7 @@ oiui_CPPFLAGS = \
 	$(OICF_CFLAGS) \
 	$(GLIBMM_CFLAGS) \
 	$(SIGC_CFLAGS) \
+	$(EFL_CFLAGS) \
 	$(LOG4CXX_CFLAGS)
 
 ## File created by the gnome-build tools

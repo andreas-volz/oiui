@@ -29,7 +29,7 @@ Main::Main(int argc, const char **argv) :
   // initialize Glib thread system
   if (!Glib::thread_supported()) Glib::thread_init();
 
-  Glib::Thread *thread = Glib::Thread::create(sigc::mem_fun(this, &Main::DBusMainLoop), false);
+  
 
 #ifdef HAVE_LOG4CXX
   log4cxx::PropertyConfigurator::configure(searchDataFile("logging.prop"));
@@ -56,7 +56,9 @@ Main::Main(int argc, const char **argv) :
 
   stateMachineAccessor.connect(sigc::mem_fun(this, &Main::smSignals));
 
-  // hmmm? should run if statemachine is complete up??
+  Glib::Thread *thread = Glib::Thread::create(sigc::mem_fun(this, &Main::DBusMainLoop), false);
+  
+  // signal the DBusMainLoop thread to run
   condSMInit.signal();
   
   stateMachineAccessor.run();
