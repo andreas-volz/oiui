@@ -10,6 +10,8 @@
 /* local */
 #include "MediaListWidgetRenderer.h"
 
+using namespace std;
+
 MediaListWidgetRenderer::MediaListWidgetRenderer()
 {
 
@@ -25,7 +27,7 @@ void MediaListWidgetRenderer::render(void *renderObject, const std::string &varN
   Edjexx::Part *part = static_cast<Edjexx::Part*>(renderObject);
 
   if(part && var)
-  {
+  {    
     if(var->getType () == Variable::TYPE_LIST)
     {
       List *ls = static_cast <List *>(var);
@@ -38,12 +40,13 @@ void MediaListWidgetRenderer::render(void *renderObject, const std::string &varN
       if (ext_eo3.getType() == "elm_list")
       {
         Elmxx::Object &elm_object = *(static_cast <Elmxx::Object *>(&ext_eo3));
-
+        
         //LOG4CXX_DEBUG(mLogger, "Elm Widget type: " << elm_object.getWidgetType());
 
         if (elm_object.getWidgetType() == "Elm_List")
         {
           Elmxx::List &list = *(static_cast <Elmxx::List *>(&elm_object));
+          //list.setStyle("xxx");
 
           // TODO: I think until the edited/merge feature is implemented it's the
           // best to clear the list before adding new elements...
@@ -57,6 +60,7 @@ void MediaListWidgetRenderer::render(void *renderObject, const std::string &varN
             if (av->getType() == Variable::TYPE_STRING)
             {
               String *str = static_cast <String *>(av);
+              cout << "MediaList: " << *str << endl;
               list.append(str->getData(), NULL, NULL);
             }
             list.go();

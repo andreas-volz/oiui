@@ -5,6 +5,9 @@
 #include <OICFMedia/OICFMediaListener.h>
 #include "MediaListWidgetRenderer.h"
 
+/* stateval */
+#include <stateval/stateval.h>
+
 class MediaListenerImpl : public OICFMediaListener
 {
 public:
@@ -18,6 +21,8 @@ private:
   void updateDeviceList(const DeviceEnum &enumtest);
 
   MediaListWidgetRenderer renderer1;
+
+  Widget *mListWidget;
 };
 
 #endif // MEDIALISTENERIMPL_H

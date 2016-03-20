@@ -11,19 +11,17 @@
 #include <cassert>
 #include <cmath>
 
-/* stateval */
-#include <stateval/stateval.h>
-
 using namespace std;
 
 MediaListenerImpl::MediaListenerImpl(DBus::Connection &connection) :
-  OICFMediaListener(connection)
+  OICFMediaListener(connection),
+  mListWidget(NULL)
 {
   StateMachineAccessor &stateMachineAccessor = StateMachineAccessor::getInstance();
 
-  Widget *w1 = stateMachineAccessor.getWidget("MediaMainView", "List01");
+  mListWidget = stateMachineAccessor.getWidget("MediaMainView", "List01");
 
-  w1->setWidgetRender(renderer1);
+  mListWidget->setWidgetRender(renderer1);
   
 }
 
@@ -49,6 +47,8 @@ void MediaListenerImpl::getWindowListResult(const LineVector &titleList, const i
     li->pushBack(st);
   }
 
+  mListWidget->setProperty("list", *li);
+    
   //mediaScreen->setActiveList (titleList);
 }
 

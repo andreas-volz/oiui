@@ -29,8 +29,9 @@ Main::Main(int argc, const char **argv) :
   // initialize Glib thread system
   if (!Glib::thread_supported()) Glib::thread_init();
 
-  
 
+  Glib::Thread *thread = Glib::Thread::create(sigc::mem_fun(this, &Main::DBusMainLoop), false);
+  
 #ifdef HAVE_LOG4CXX
   log4cxx::PropertyConfigurator::configure(searchDataFile("logging.prop"));
 #endif // HAVE_LOG4CXX
@@ -56,7 +57,8 @@ Main::Main(int argc, const char **argv) :
 
   stateMachineAccessor.connect(sigc::mem_fun(this, &Main::smSignals));
 
-  Glib::Thread *thread = Glib::Thread::create(sigc::mem_fun(this, &Main::DBusMainLoop), false);
+  // if I activate this then DBUS isn't working
+  //Glib::Thread *thread = Glib::Thread::create(sigc::mem_fun(this, &Main::DBusMainLoop), false);
   
   // signal the DBusMainLoop thread to run
   condSMInit.signal();
@@ -83,6 +85,11 @@ void Main::DBusMainLoop()
   EventHandler &eventHandler(EventHandler::instance());
   eventHandler.init();
 
+  // wait for starting all the statemachine stuff in the ecore thread...
+  mutexSMInit.lock();
+  condSMInit.wait(mutexSMInit);
+  mutexSMInit.unlock();
+  
   // create OICF listeners
   ControlListenerImpl controlListener(conn);
   MediaListenerImpl mediaListener(conn);
@@ -91,11 +98,6 @@ void Main::DBusMainLoop()
   // create OICF callers
   OICFNavigation oicfNavigation(conn);
   OICFMedia oicfMedia(conn);
-
-  // wait for starting all the statemachine stuff in the ecore thread...
-  mutexSMInit.lock();
-  condSMInit.wait(mutexSMInit);
-  mutexSMInit.unlock();
 
   Navigation navigation(oicfNavigation);
   Media media(oicfMedia);
