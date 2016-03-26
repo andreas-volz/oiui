@@ -27,6 +27,7 @@ Media::Media(OICFMedia &oicfMedia) :
   eventHandler.connect("MEDIA_DECREMENT_TITLE", sigc::mem_fun(this, &Media::decrementTitle));
   eventHandler.connect("MEDIA_LOAD", sigc::mem_fun(this, &Media::load));
   eventHandler.connect("CHANGE_MEDIA_TITLE", sigc::mem_fun(this, &Media::changeMediaTitle));
+  //eventHandler.connect("MEDIA_SELECT_TITLE", sigc::mem_fun(this, &Media::changeMediaTitle));
 }
 
 void Media::load()
@@ -58,4 +59,9 @@ void Media::changeMediaTitle()
   st->change("New Title string " + toString(count));
 
   stateMachineAccessor.pushEvent("VIEW_UPDATE");
+}
+
+void Media::selectTitle(const Line &title)
+{
+  mOICFMedia.selectTitle(title);
 }

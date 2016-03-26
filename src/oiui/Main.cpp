@@ -102,6 +102,8 @@ void Main::DBusMainLoop()
   Navigation navigation(oicfNavigation);
   Media media(oicfMedia);
 
+  mediaListener.setMedia(&media);
+
   dispatcher.enter();
 
   dispatcher.del_pipe(mSMToDBusPipe);

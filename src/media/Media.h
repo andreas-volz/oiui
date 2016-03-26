@@ -8,12 +8,14 @@ class Media
 public:
   Media(OICFMedia &oicfMedia);
 
+  void selectTitle(const Line &title);
+  
 private:
   void load();
   void incrementTitle();
   void decrementTitle();
   void changeMediaTitle();
-
+  
   OICFMedia &mOICFMedia;
 };
 
