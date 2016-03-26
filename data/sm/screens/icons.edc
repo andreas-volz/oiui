@@ -245,3 +245,60 @@ group { name: "NavZoomMinusIcon";
        }
     }
  }
+ group { name: "MediaAudiofileIcon";
+    parts {
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                offset: 0 0;
+             }
+             image {
+                normal: "audiofile.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+ }
+ group { name: "MediaFolderIcon";
+    parts {
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                offset: 0 0;
+             }
+             image {
+                normal: "folder.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+ }
+ group { name: "MediaFolderUpIcon";
+    parts {
+       part { name: "Image01";
+          type: IMAGE;
+          description { state: "default" 0;
+             aspect_preference: SOURCE;
+             rel1 {
+                offset: 0 0;
+             }
+             image {
+                normal: "folder_up.png";
+                middle: DEFAULT;
+             }
+             fill {
+             }
+          }
+       }
+    }
+ }

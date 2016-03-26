@@ -23,7 +23,7 @@
     <event name="MEDIA_DETAIL"/>
     <event name="MEDIA_TITLE_DETAILS"/>
     <event name="MEDIA_CD_DETAILS"/>
-    <event name="CHANGE_MEDIA_TITLE"/>
+    <event name="MEDIA_SELECT_TITLE"/>
     <event name="MAP_ZOOM_IN"/>
     <event name="MAP_ZOOM_OUT"/>
     <event name="MAP_JUMP_CURSOR"/>
@@ -94,10 +94,12 @@
       <variable type="String" value="Second Element"/>
       <variable type="String" value="Third Element"/>
     </variable>
-    <variable name="ListExample2" type="List">
-      <variable type="String" value="Iron Maiden"/>
-      <variable type="String" value="Doro"/>
-      <variable type="String" value="ACDC"/>
+    <variable name="MediaList" type="VoidPtr">
+      <!--<variable type="Struct">
+        <variable name="id" type="Integer" value="0"/>
+        <variable name="iconType" type="Integer" value="0"/>
+        <variable name="name" type="String" value="Iron Maiden"/>
+       </variable>-->
     </variable>
     <variable name="NavLastDestList" type="List">
       <variable type="String" value="Babenhausen, VDO Strasse"/>
@@ -266,11 +268,11 @@
         <map from="edje,Button01,clicked" to="app,Menu"/>
         <map from="edje,Button02,clicked" to="MEDIA_DECREMENT_TITLE"/>
         <map from="edje,Button03,clicked" to="MEDIA_INCREMENT_TITLE"/>
-        <map from="edje,Button04,clicked" to="CHANGE_MEDIA_TITLE"/>
+        <map from="edje,List01,mouse,clicked,1" to="MEDIA_SELECT_TITLE"/>
       </mappings>
       <widgets>
         <widget name="List01">
-          <property name="list" variable="ListExample2"/>
+          <property name="list" variable="MediaList"/>
         </widget>
       </widgets>
     </view>

@@ -21,35 +21,28 @@ MediaListenerImpl::MediaListenerImpl(DBus::Connection &connection) :
 
   mListWidget = stateMachineAccessor.getWidget("MediaMainView", "List01");
 
-  mListWidget->setWidgetRender(renderer1);
-  
+  mListWidget->setWidgetRender(mediaRenderer);
+}
+
+void MediaListenerImpl::setMedia(Media *media)
+{
+  mediaRenderer.setMedia(media);
 }
 
 void MediaListenerImpl::getWindowListResult(const LineVector &titleList, const int32_t &start, const int32_t &end, const int32_t &size)
 {
   cout << "receive MediaListenerImpl::getWindowListResult" << endl;
 
+  mTitleList = titleList;
+  
   StateMachineAccessor &stateMachineAccessor = StateMachineAccessor::getInstance();
-  Variable *av = stateMachineAccessor.getVariable("ListExample");
+  Variable *av = stateMachineAccessor.getVariable("MediaList");
   assert(av);
-  List *li = static_cast <List*>(av);
-  li->clear();
 
-  for (LineVector::const_iterator vs_it = titleList.begin();
-       vs_it != titleList.end();
-       ++vs_it)
-  {
-    const Line &l = *vs_it;
-
-    cout << "ID: " << l.id << " Name: " << l.name << endl;
-    String *st = new String();
-    st->change(l.name);
-    li->pushBack(st);
-  }
-
-  mListWidget->setProperty("list", *li);
-    
-  //mediaScreen->setActiveList (titleList);
+  VoidPtr *vp = static_cast<VoidPtr*>(av);
+  vp->change(&mTitleList);
+  
+  mListWidget->setProperty("list", *vp);
 }
 
 void MediaListenerImpl::updateSelectedPath(const LineVector &path)
