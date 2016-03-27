@@ -175,6 +175,7 @@
     <params>
       <param key="width" value="800"/>
       <param key="height" value="480"/>
+      <param key="borderless" value="true"/>
     </params>
     
   	<view name="MenuMainView">

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+Xephyr -ac -screen 800x480 :1 &
+
+export E_HOME=.oilm
+
+unset E_CONF_PROFILE # if you run E17 as host!!!
+unset E_DATA_DIR
+unset E_START_TIME
+unset E_BIN_DIR
+unset E_SCALE
+unset E_ICON_THEME
+unset E_LIB_DIR
+unset E_RESTART
+unset E_LOCALE_DIR
+unset E_START
+unset E_PREFIX
+unset DESKTOP
+unset E_IPC_SOCKET
+
+sleep 1s && /opt/e20/bin/enlightenment_start -display :1
+

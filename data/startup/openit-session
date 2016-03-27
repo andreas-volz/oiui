@@ -30,15 +30,15 @@ if [ "$1" != "local" ]; then
 fi
 fi
 
-dmesg > $LOGPATH/dmesg.log
+#dmesg > $LOGPATH/dmesg.log
 
 ## TODO: kill dbus-monitor after exit or new run
-dbus-monitor > $LOGPATH/dbus-monitor.log&
+#dbus-monitor > $LOGPATH/dbus-monitor.log&
 
 cd $OIUI_PATH
 ./oiui > $LOGPATH/oiui.log 2>&1 &
 
-gpsfake -u "-P 122333" $OISP_PATH/../test/nmea/langen1.nmea&
+#gpsfake -u "-P 122333" $OISP_PATH/../test/nmea/langen1.nmea&
 echo "gpsfake started..."
 
 sleep 3s
@@ -47,7 +47,7 @@ cd $OISP_PATH/OISPNavigation_libosmscout
 ./OISPNavigation_libosmscout --desktop --g 122333 > $LOGPATH/OISPNavigation.log 2>&1 &
 
 cd $OISP_PATH/OISPMedia
-./OISPMedia > $LOGPATH/OISPMedia.log 2>&1 &
+#./OISPMedia > $LOGPATH/OISPMedia.log 2>&1 &
 
 JOYSTICK_TEST0=`ls /dev/input/js0 2>/dev/null`
 JOYSTICK_TEST1=`ls /dev/input/js1 2>/dev/null`
@@ -56,7 +56,7 @@ JOYSTICK_TEST1=`ls /dev/input/js1 2>/dev/null`
 if [ "$JOYSTICK_TEST0" = "" ] && [ "$JOYSTICK_TEST1" = "" ]; then
   echo "start OISPControl_keyb"
   cd $OISP_PATH/OISPControl_keyb/
-  ./OISPControl_keyb > $LOGPATH/OISPControl_keyb.log 2>&1 &
+  #./OISPControl_keyb > $LOGPATH/OISPControl_keyb.log 2>&1 &
 else
   echo "start OISPControl"
 
@@ -67,14 +67,14 @@ else
   killall lt-OISPControl_keyb
 
   cd $OISP_PATH/OISPControl/
-  ./OISPControl > $LOGPATH/OISPControl.log 2>&1 &
+  #./OISPControl > $LOGPATH/OISPControl.log 2>&1 &
 
   #if [ test -f /var/run/gpsd.pid ]; then
     echo "Starting GPS Logger..."
     ## kill all gpxlogger before to ensure only one is running
     killall gpspipe
 
-    gpspipe -r  > $LOGPATH/gpstrack.log &
+    #gpspipe -r  > $LOGPATH/gpstrack.log &
  # fi
 fi
 
