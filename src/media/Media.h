@@ -12,6 +12,7 @@ public:
   
 private:
   void load();
+  void pause();
   void incrementTitle();
   void decrementTitle();
   void changeMediaTitle();

@@ -52,6 +52,7 @@ void MediaListenerImpl::updateSelectedPath(const LineVector &path)
 
 void MediaListenerImpl::updateSelectedTitle(const Line &title)
 {
+  // TODO: implement here to select a new playing file that is passive choosen (e.g. by increment or so...)
   //mediaScreen->updateSelectedTitle (title);
 }
 

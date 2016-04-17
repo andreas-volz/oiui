@@ -35,6 +35,7 @@
     <event name="NAVIGATION_ROUTE_2"/>
     <event name="NAVIGATION_ROUTE_3"/>
     <event name="MEDIA_LOAD"/>
+    <event name="MEDIA_PAUSE"/>
     <event name="MEDIA_INCREMENT_TITLE"/>
     <event name="MEDIA_DECREMENT_TITLE"/>
     <event name="edje,Button01,clicked"/>
@@ -175,7 +176,10 @@
     <params>
       <param key="width" value="800"/>
       <param key="height" value="480"/>
-      <param key="borderless" value="true"/>
+      <param key="borderless" value="false"/>
+      <param key="shaped" value="true"/>
+      <param key="alpha" value="true"/>
+      <param key="fullscreen" value="false"/>
     </params>
     
   	<view name="MenuMainView">
@@ -269,6 +273,7 @@
         <map from="edje,Button01,clicked" to="app,Menu"/>
         <map from="edje,Button02,clicked" to="MEDIA_DECREMENT_TITLE"/>
         <map from="edje,Button03,clicked" to="MEDIA_INCREMENT_TITLE"/>
+        <map from="edje,Button05,clicked" to="MEDIA_PAUSE"/>
         <map from="edje,List01,mouse,clicked,1" to="MEDIA_SELECT_TITLE"/>
       </mappings>
       <widgets>

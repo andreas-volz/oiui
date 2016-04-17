@@ -26,13 +26,18 @@ Media::Media(OICFMedia &oicfMedia) :
   eventHandler.connect("MEDIA_INCREMENT_TITLE", sigc::mem_fun(this, &Media::incrementTitle));
   eventHandler.connect("MEDIA_DECREMENT_TITLE", sigc::mem_fun(this, &Media::decrementTitle));
   eventHandler.connect("MEDIA_LOAD", sigc::mem_fun(this, &Media::load));
+  eventHandler.connect("MEDIA_PAUSE", sigc::mem_fun(this, &Media::pause));
   eventHandler.connect("CHANGE_MEDIA_TITLE", sigc::mem_fun(this, &Media::changeMediaTitle));
-  //eventHandler.connect("MEDIA_SELECT_TITLE", sigc::mem_fun(this, &Media::changeMediaTitle));
 }
 
 void Media::load()
 {
   mOICFMedia.getWindowList(0, 100);
+}
+
+void Media::pause()
+{
+  mOICFMedia.pause();
 }
 
 void Media::incrementTitle()
