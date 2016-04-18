@@ -19,6 +19,7 @@
 using namespace std;
 
 MediaListWidgetRenderer::MediaListWidgetRenderer() :
+  mLogger("oisp.Media.MediaListWidgetRenderer"),
   mMedia(NULL)
 {
 
@@ -26,13 +27,13 @@ MediaListWidgetRenderer::MediaListWidgetRenderer() :
 
 MediaListWidgetRenderer::~MediaListWidgetRenderer()
 {
-  cout << "~MediaListWidgetRenderer" << endl;
 }
 
+// TODO: move this callback as member function (also to have access to logger)
 static void _sel_cb(void *data, Evas_Object *obj, void *event_info)
 {
   Elm_Object_Item *list_it = static_cast<Elm_Object_Item*>(event_info);
-  printf("Selected label: %s\n", elm_object_item_text_get(list_it));
+  cout << "Selected label: " << elm_object_item_text_get(list_it) << endl;;
 
   void *attached_data = elm_object_item_data_get(list_it);
 
@@ -79,7 +80,7 @@ void MediaListWidgetRenderer::render(void *renderObject, const std::string &varN
               {
                 const Line &l = *vs_it;
 
-                cout << "ID: " << l.id << " Name: " << l.name << endl;
+                LOG4CXX_TRACE(mLogger, "ID: " << l.id << " Name: " << l.name); 
 
                string iconTypeName;
                 switch(l.type)
@@ -114,7 +115,7 @@ void MediaListWidgetRenderer::render(void *renderObject, const std::string &varN
     }
     else // delete list objects
     {
-      cout << "delete all list objects" << endl;
+      LOG4CXX_TRACE(mLogger, "delete all list objects");
       // TODO: still needed?
     }
   }
@@ -128,5 +129,5 @@ void MediaListWidgetRenderer::setMedia(Media *media)
 
 Variable *MediaListWidgetRenderer::getRenderedValue(void *renderObject, const std::string &varName)
 {
-
+  return NULL;
 }

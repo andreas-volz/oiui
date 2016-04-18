@@ -4,6 +4,9 @@
 #include <dbus-c++/dbus.h>
 #include <OICFNavigation/OICFNavigationListener.h>
 
+/* framework */
+#include "../framework/Logger.h"
+
 class NavigationListenerImpl : public OICFNavigationListener
 {
 public:
@@ -16,7 +19,7 @@ private:
   void searchCityResult(const std::vector< std::string >& cities);
   void getNextValidCharactersResult(const std::string& validChars);
 
-
+  Logger mLogger;
 };
 
 #endif // MEDIALISTENERIMPL_H

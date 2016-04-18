@@ -16,6 +16,7 @@
 using namespace std;
 
 Media::Media(OICFMedia &oicfMedia) :
+  mLogger("oisp.Media.Media"),
   mOICFMedia(oicfMedia)
 {
   EventHandler &eventHandler(EventHandler::instance());

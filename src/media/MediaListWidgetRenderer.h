@@ -7,6 +7,9 @@
 /* stateval */
 #include <stateval/stateval.h>
 
+/* framework */
+#include "../framework/Logger.h"
+
 /* local */
 #include "Media.h"
 
@@ -27,6 +30,7 @@ public:
   void setMedia(Media *media);
   
 private:
+  Logger mLogger;
   Media *mMedia;
 };
 

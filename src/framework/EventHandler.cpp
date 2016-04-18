@@ -11,6 +11,11 @@
 
 using namespace std;
 
+EventHandler::EventHandler() :
+  mLogger("oisp.Framework.EventHandler")
+{
+}
+
 EventHandler &EventHandler::instance()
 {
   static EventHandler _instance;
@@ -37,7 +42,7 @@ void EventHandler::deliverEvent(int event)
     // emit also multible signals...
     for (; findResult != lastElement; ++findResult)
     {
-      cout << "call event '" << event << "' to app" << endl;
+      LOG4CXX_TRACE(mLogger, "call event '" << event << "' to app");
       EventHandlerSignal *signal = (*findResult).second;
       signal->emit();
     }

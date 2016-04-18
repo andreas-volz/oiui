@@ -17,6 +17,7 @@
 using namespace std;
 
 NavigationListenerImpl::NavigationListenerImpl(DBus::Connection &connection) :
+  mLogger("oisp.Navigation.NavigationListenerImpl"),
   OICFNavigationListener(connection)
 {
 
@@ -24,7 +25,7 @@ NavigationListenerImpl::NavigationListenerImpl(DBus::Connection &connection) :
 
 void NavigationListenerImpl::updateGPSPositionWGS84(const CoordWGS84 &pos)
 {
-  cerr << "updateGPSPositionWGS84" << endl;
+  LOG4CXX_TRACE(mLogger, "updateGPSPositionWGS84");
 
   StateMachineAccessor &stateMachineAccessor = StateMachineAccessor::getInstance();
   Variable *av = stateMachineAccessor.getVariable("LatitudeValue");

@@ -2,7 +2,9 @@
 #define NAVIGATION_H
 
 #include <OICFNavigation/OICFNavigation.h>
-//#include <OICFNavigation/OICFNavigation.h>
+
+/* framework */
+#include "../framework/Logger.h"
 
 class Navigation
 {
@@ -36,6 +38,7 @@ private:
   void smCommandNavigationRoute2();
   void smCommandNavigationRoute3();
 
+  Logger mLogger;
   OICFNavigation &mOICFNavigation;
 };
 

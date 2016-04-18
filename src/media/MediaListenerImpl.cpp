@@ -14,6 +14,7 @@
 using namespace std;
 
 MediaListenerImpl::MediaListenerImpl(DBus::Connection &connection) :
+  mLogger("oisp.Media.MediaListenerImpl"),
   OICFMediaListener(connection),
   mListWidget(NULL)
 {
@@ -31,8 +32,8 @@ void MediaListenerImpl::setMedia(Media *media)
 
 void MediaListenerImpl::getWindowListResult(const LineVector &titleList, const int32_t &start, const int32_t &end, const int32_t &size)
 {
-  cout << "receive MediaListenerImpl::getWindowListResult" << endl;
-
+  LOG4CXX_TRACE(mLogger, "getWindowListResult");
+  
   mTitleList = titleList;
   
   StateMachineAccessor &stateMachineAccessor = StateMachineAccessor::getInstance();
@@ -52,8 +53,7 @@ void MediaListenerImpl::updateSelectedPath(const LineVector &path)
 
 void MediaListenerImpl::updateSelectedTitle(const Line &title)
 {
-  // TODO: implement here to select a new playing file that is passive choosen (e.g. by increment or so...)
-  //mediaScreen->updateSelectedTitle (title);
+  
 }
 
 void MediaListenerImpl::updatePlayPosition(const int64_t &pos, const int64_t &duration)

@@ -8,6 +8,9 @@
 /* stateval */
 #include <stateval/stateval.h>
 
+/* framework */
+#include "../framework/Logger.h"
+
 class MediaListenerImpl : public OICFMediaListener
 {
 public:
@@ -22,6 +25,7 @@ private:
   void updatePlayPosition(const int64_t &pos, const int64_t &duration);
   void updateDeviceList(const DeviceEnum &enumtest);
 
+  Logger mLogger;
   MediaListWidgetRenderer mediaRenderer;
   Widget *mListWidget;
   LineVector mTitleList;

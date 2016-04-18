@@ -8,6 +8,9 @@
 /* SIGC */
 #include <sigc++/sigc++.h>
 
+/* framework */
+#include "../framework/Logger.h"
+
 typedef sigc::signal<void> EventHandlerSignal;
 typedef sigc::slot<void> EventHandlerSlot;
 
@@ -26,10 +29,11 @@ public:
   void disconnectAll();
 
 private:
-  EventHandler() {}
+  EventHandler();
   EventHandler(const EventHandler &);
   virtual ~EventHandler();
 
+  Logger mLogger;
   std::multimap <int, EventHandlerSignal *> mSignalList;
 };
 

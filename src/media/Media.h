@@ -3,6 +3,9 @@
 
 #include <OICFMedia/OICFMedia.h>
 
+/* framework */
+#include "../framework/Logger.h"
+
 class Media
 {
 public:
@@ -16,7 +19,8 @@ private:
   void incrementTitle();
   void decrementTitle();
   void changeMediaTitle();
-  
+
+  Logger mLogger;
   OICFMedia &mOICFMedia;
 };
 

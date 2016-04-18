@@ -15,6 +15,7 @@
 using namespace std;
 
 Navigation::Navigation(OICFNavigation &oicfNavigation) :
+  mLogger("oisp.Navigation.Navigation"),
   mOICFNavigation(oicfNavigation)
 {
   EventHandler &eventHandler(EventHandler::instance());
@@ -33,13 +34,13 @@ Navigation::Navigation(OICFNavigation &oicfNavigation) :
 
 void Navigation::smCommandZoomIn()
 {
-  cout << "smCommandZoomIn" << endl;
+  LOG4CXX_TRACE(mLogger, "smCommandZoomIn");
   mOICFNavigation.zoomIn();
 }
 
 void Navigation::smCommandZoomOut()
 {
-  cout << "smCommandZoomOut" << endl;
+  LOG4CXX_TRACE(mLogger, "smCommandZoomOut");
   mOICFNavigation.zoomOut();
 }
 
@@ -70,7 +71,7 @@ void Navigation::smCommandMapJumpCursor()
 
 void Navigation::smCommandActivateLastDestination()
 {
-  cout << "smCommandActivateLastDestination" << endl;
+  LOG4CXX_TRACE(mLogger, "smCommandActivateLastDestination");
 
   StateMachineAccessor &stateMachineAccessor = StateMachineAccessor::getInstance();
   Variable *av = stateMachineAccessor.getVariable("NavLastDestList");
