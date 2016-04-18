@@ -15,7 +15,7 @@
 using namespace std;
 
 Navigation::Navigation(OICFNavigation &oicfNavigation) :
-  mLogger("oisp.Navigation.Navigation"),
+  mLogger("oiui.Navigation.Navigation"),
   mOICFNavigation(oicfNavigation)
 {
   EventHandler &eventHandler(EventHandler::instance());

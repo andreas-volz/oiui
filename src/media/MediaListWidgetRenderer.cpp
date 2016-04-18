@@ -19,7 +19,7 @@
 using namespace std;
 
 MediaListWidgetRenderer::MediaListWidgetRenderer() :
-  mLogger("oisp.Media.MediaListWidgetRenderer"),
+  mLogger("oiui.Media.MediaListWidgetRenderer"),
   mMedia(NULL)
 {
 

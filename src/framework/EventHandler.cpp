@@ -12,7 +12,7 @@
 using namespace std;
 
 EventHandler::EventHandler() :
-  mLogger("oisp.Framework.EventHandler")
+  mLogger("oiui.Framework.EventHandler")
 {
 }
 

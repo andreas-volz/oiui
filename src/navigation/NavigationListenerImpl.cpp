@@ -17,7 +17,7 @@
 using namespace std;
 
 NavigationListenerImpl::NavigationListenerImpl(DBus::Connection &connection) :
-  mLogger("oisp.Navigation.NavigationListenerImpl"),
+  mLogger("oiui.Navigation.NavigationListenerImpl"),
   OICFNavigationListener(connection)
 {
 

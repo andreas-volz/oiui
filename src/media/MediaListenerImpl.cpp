@@ -14,7 +14,7 @@
 using namespace std;
 
 MediaListenerImpl::MediaListenerImpl(DBus::Connection &connection) :
-  mLogger("oisp.Media.MediaListenerImpl"),
+  mLogger("oiui.Media.MediaListenerImpl"),
   OICFMediaListener(connection),
   mListWidget(NULL)
 {
@@ -53,7 +53,7 @@ void MediaListenerImpl::updateSelectedPath(const LineVector &path)
 
 void MediaListenerImpl::updateSelectedTitle(const Line &title)
 {
-  
+  LOG4CXX_TRACE(mLogger, "updateSelectedTitle() name: " << title.name << " type: " << title.type << " id: " << title.id);
 }
 
 void MediaListenerImpl::updatePlayPosition(const int64_t &pos, const int64_t &duration)
