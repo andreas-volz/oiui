@@ -58,7 +58,16 @@ void MediaListenerImpl::updateSelectedTitle(const Line &title)
 
 void MediaListenerImpl::updatePlayPosition(const int64_t &pos, const int64_t &duration)
 {
-  //mediaScreen->updatePlayPosition (pos, duration);
+  int p_sec = (int) pos % 60;
+  int p_min = pos / 60;
+  int p_hour = pos / 3600;
+  
+  int d_sec = (int) duration % 60;
+  int d_min = duration / 60;
+  int d_hour = duration / 3600;
+  
+  LOG4CXX_INFO(mLogger, "duration = " << d_hour << "h " << d_min << "m " << d_sec << "s");
+  LOG4CXX_INFO(mLogger, "position = " << p_hour << "h " << p_min << "m " << p_sec << "s");
 }
 
 void MediaListenerImpl::updateDeviceList(const DeviceEnum &enumtest)

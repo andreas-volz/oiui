@@ -14,7 +14,7 @@ FRAMEWORK = \
 	../framework/searchFile.cpp\
 	../framework/searchFile.h\
 	../framework/util.h\
-        ../Logger.h
+	../framework/Logger.h
 
 NAVIGATION = \
 	../navigation/Navigation.cpp\
@@ -31,9 +31,9 @@ MEDIA = \
 	../media/MediaListWidgetRenderer.h
 
 oiui_SOURCES = \
-	${FRAMEWORK}\
-	${NAVIGATION}\
-	${MEDIA}\
+	$(FRAMEWORK)\
+	$(NAVIGATION)\
+	$(MEDIA)\
 	Main.cpp\
 	Main.h	
 
